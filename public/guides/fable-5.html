@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fable 5 — Step-by-Step Guide · Code Mode</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0d0f1e; --card:#151830; --card2:#1b1f3d; --line:rgba(255,255,255,.08);
+  --text:#e6e8f5; --muted:#9aa0c0; --teal:#5eead4; --violet:#a78bfa;
+  --teal-dim:rgba(94,234,212,.12); --amber:#fbbf24; --red:#f87171;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;line-height:1.65;font-size:16px}
+::selection{background:var(--teal);color:#0d0f1e}
+
+/* ---------- HERO ---------- */
+.hero{padding:64px 20px 40px;text-align:center;background:
+  radial-gradient(600px 300px at 50% -50px, rgba(94,234,212,.14), transparent),
+  radial-gradient(500px 260px at 80% 30%, rgba(167,139,250,.10), transparent)}
+.badge{display:inline-block;border:1px solid var(--teal);color:var(--teal);font-size:12px;
+  letter-spacing:2.5px;padding:6px 16px;border-radius:999px;font-weight:600;text-transform:uppercase}
+h1.title{font-family:'Space Grotesk',sans-serif;font-size:clamp(48px,10vw,84px);font-weight:700;
+  letter-spacing:2px;margin:20px 0 6px;
+  background:linear-gradient(92deg,var(--teal),var(--violet));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero .sub{font-family:'Space Grotesk',sans-serif;font-size:clamp(17px,3.5vw,22px);color:var(--text);font-weight:500}
+.hero .tag{color:var(--muted);max-width:520px;margin:14px auto 0;font-size:15px}
+.hero .brand{margin-top:26px;font-size:13px;color:var(--muted)}
+.hero .brand b{color:var(--text);letter-spacing:3px;font-family:'Space Grotesk',sans-serif}
+.hero .brand span{color:var(--teal)}
+
+/* ---------- STICKY NAV ---------- */
+nav{position:sticky;top:0;z-index:50;background:rgba(13,15,30,.85);backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--line);padding:10px 12px;display:flex;gap:8px;overflow-x:auto;
+  justify-content:flex-start;scrollbar-width:none}
+nav::-webkit-scrollbar{display:none}
+nav a{flex:0 0 auto;font-size:13px;font-weight:600;color:var(--muted);text-decoration:none;
+  padding:8px 14px;border-radius:999px;border:1px solid transparent;white-space:nowrap;transition:.2s}
+nav a:hover{color:var(--text)}
+nav a.active{color:var(--teal);border-color:var(--teal);background:var(--teal-dim)}
+@media(min-width:760px){nav{justify-content:center}}
+
+/* ---------- LAYOUT ---------- */
+.wrap{max-width:760px;margin:0 auto;padding:0 20px 80px}
+section.project{padding-top:56px}
+.eyebrow{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--teal);letter-spacing:1px;margin-bottom:8px}
+h2.ptitle{font-family:'Space Grotesk',sans-serif;font-size:clamp(26px,5.5vw,34px);font-weight:700;line-height:1.2}
+.pgoal{margin-top:14px;color:var(--muted)}
+.pgoal b,.pgoal strong{color:var(--text)}
+
+/* ---------- CARDS ---------- */
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px 22px;margin-top:18px}
+.card h4{font-family:'Space Grotesk',sans-serif;font-size:15px;letter-spacing:.5px;margin-bottom:10px;color:var(--text)}
+.card ul{padding-left:20px;color:var(--muted)}
+.card li{margin-bottom:6px}
+.card li b{color:var(--text)}
+
+.warn{border-color:rgba(251,191,36,.35);background:linear-gradient(180deg,rgba(251,191,36,.07),var(--card))}
+.warn h4{color:var(--amber)}
+.warn p{color:var(--muted);font-size:15px}
+.warn p b{color:var(--text)}
+
+/* ---------- STEPS ---------- */
+.step{display:flex;gap:16px;margin-top:26px}
+.stepnum{flex:0 0 40px;height:40px;border-radius:12px;background:var(--card2);border:1px solid var(--line);
+  display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;
+  font-weight:700;color:var(--teal);font-size:17px}
+.stepbody{flex:1;min-width:0}
+.stepbody h3{font-size:17px;font-weight:600;margin-bottom:6px}
+.stepbody p{color:var(--muted);font-size:15px;margin-bottom:8px}
+.stepbody p b,.stepbody p strong{color:var(--text)}
+.stepbody ul{padding-left:20px;color:var(--muted);font-size:15px}
+.stepbody li{margin-bottom:5px}
+
+/* ---------- PROMPT TERMINAL (signature) ---------- */
+.prompt{margin:14px 0 4px;border-radius:14px;overflow:hidden;border:1px solid rgba(94,234,212,.25);
+  background:#0a0c18;box-shadow:0 0 0 1px rgba(0,0,0,.3), 0 12px 30px -18px rgba(94,234,212,.25)}
+.prompt-bar{display:flex;align-items:center;justify-content:space-between;padding:9px 14px;
+  background:#12152b;border-bottom:1px solid var(--line)}
+.prompt-label{font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:2px;color:var(--teal)}
+.copybtn{font-family:'Inter',sans-serif;font-size:12.5px;font-weight:600;color:#0d0f1e;background:var(--teal);
+  border:none;border-radius:8px;padding:6px 14px;cursor:pointer;transition:.15s}
+.copybtn:hover{filter:brightness(1.1)}
+.copybtn:focus-visible{outline:2px solid #fff;outline-offset:2px}
+.copybtn.done{background:var(--violet);color:#fff}
+.prompt pre{padding:16px 18px;font-family:'JetBrains Mono',monospace;font-size:13px;line-height:1.65;
+  color:#c9f4ea;white-space:pre-wrap;word-wrap:break-word;max-height:420px;overflow:auto}
+.prompt pre .hl{color:var(--amber)}
+.edit-note{font-size:12.5px;color:var(--muted);margin:6px 2px 0;font-style:italic}
+
+/* ---------- TIP / MISTAKE ---------- */
+.tip{border-left:4px solid var(--teal);background:var(--teal-dim);border-radius:0 12px 12px 0;
+  padding:14px 18px;margin-top:22px;font-size:15px}
+.tip b{color:var(--teal)}
+.mist{border-left:4px solid var(--red);background:rgba(248,113,113,.08);border-radius:0 12px 12px 0;
+  padding:14px 18px;margin-top:14px;font-size:15px}
+.mist b{color:var(--red)}
+.tip ul,.mist ul{padding-left:18px;margin-top:6px;color:var(--muted)}
+.tip li,.mist li{margin-bottom:4px}
+
+.divider{margin:56px 0 0;border:none;border-top:1px solid var(--line)}
+
+/* ---------- QUOTE ---------- */
+.q{border-left:4px solid var(--violet);padding:10px 16px;margin:12px 0;color:var(--muted);font-style:italic;font-size:15px}
+
+/* ---------- CONCEPT BOX ---------- */
+.concept{background:linear-gradient(135deg,rgba(94,234,212,.08),rgba(167,139,250,.08));
+  border:1px solid rgba(167,139,250,.3);border-radius:16px;padding:20px 22px;margin-top:18px}
+.concept h4{font-family:'Space Grotesk',sans-serif;color:var(--violet);margin-bottom:8px;font-size:15px;letter-spacing:.5px}
+.concept p{font-size:15px;color:var(--text)}
+.concept .vs{font-family:'JetBrains Mono',monospace;font-size:13.5px;display:block;margin-top:10px;line-height:1.9}
+.concept .vs .bad{color:var(--muted)}
+.concept .vs .good{color:var(--teal)}
+
+/* ---------- FOOTER CTA ---------- */
+.footer{margin-top:70px;text-align:center;padding:44px 24px;border-radius:20px;
+  background:linear-gradient(150deg,#12152b,#1c2145);border:1px solid var(--line)}
+.footer h2{font-family:'Space Grotesk',sans-serif;font-size:26px;margin-bottom:10px}
+.footer p{color:var(--muted);max-width:460px;margin:0 auto 8px;font-size:15px}
+.footer .handle{display:inline-block;margin-top:16px;font-family:'Space Grotesk',sans-serif;
+  color:var(--teal);border:1px solid var(--teal);border-radius:999px;padding:10px 24px;
+  text-decoration:none;font-weight:600;letter-spacing:.5px}
+.disc{margin-top:28px;font-size:12px;color:#6a6f8e;text-align:center;max-width:640px;margin-left:auto;margin-right:auto}
+
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+@media(max-width:520px){
+  .step{gap:12px}.stepnum{flex-basis:34px;height:34px;font-size:15px;border-radius:10px}
+  .card{padding:16px 16px}.prompt pre{font-size:12.5px}
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <span class="badge">Free Guide · 2026</span>
+  <h1 class="title">FABLE 5</h1>
+  <div class="sub">The Complete Step-by-Step Guide</div>
+  <p class="tag">5 insane things you can build — without writing a single line of code. Copy the prompts, follow the steps, build today.</p>
+  <div class="brand"><b>CODE MODE</b> · <span>@code_mode_official</span></div>
+</header>
+
+<nav id="nav">
+  <a href="#start" class="active">Start Here</a>
+  <a href="#p1">1 · Trading Bot</a>
+  <a href="#p2">2 · Screenshot→Site</a>
+  <a href="#p3">3 · Second Brain</a>
+  <a href="#p4">4 · Self-Improving AI</a>
+  <a href="#p5">5 · Auto Schedule</a>
+  <a href="#bonus">🎁 Bonus</a>
+</nav>
+
+<main class="wrap">
+
+<!-- ================= START ================= -->
+<section class="project" id="start">
+  <div class="eyebrow">// BEFORE YOU START</div>
+  <h2 class="ptitle">Read this first 👋</h2>
+  <p class="pgoal"><b>What is Fable 5?</b> Claude Fable 5 is Anthropic's most advanced AI model. It doesn't just <i>answer</i> questions — it can <i>do</i> entire jobs: write and run code, build websites, connect to your apps, and work on its own.</p>
+  <div class="card">
+    <h4>WHAT YOU NEED</h4>
+    <ul>
+      <li>A Claude account → go to <b>claude.ai</b> and sign up (free to start)</li>
+      <li>A laptop/desktop is best (mobile works for most of these too)</li>
+      <li>15–30 minutes per project</li>
+    </ul>
+  </div>
+  <div class="tip"><b>🏆 The one golden rule:</b> The more clearly you explain what you want, the better the result. Talk to Fable 5 like you're explaining to a smart friend — not like typing keywords into Google.</div>
+</section>
+
+<hr class="divider">
+
+<!-- ================= PROJECT 1 ================= -->
+<section class="project" id="p1">
+  <div class="eyebrow">// PROJECT 01</div>
+  <h2 class="ptitle">Build a Trading Bot 📈 <br>(Zero Code)</h2>
+
+  <div class="card warn">
+    <h4>⚠️ HONEST WARNING FIRST</h4>
+    <p>This bot will NOT make you rich overnight. It's a tool that watches charts and follows YOUR rules automatically. Whether those rules make money depends on your strategy. <b>Always start with paper trading (fake money) — never real money on day one.</b> Nothing here is financial advice.</p>
+  </div>
+
+  <div class="card">
+    <h4>🎯 WHAT YOU'LL BUILD</h4>
+    <ul>
+      <li>Watches live market prices</li>
+      <li>Checks your conditions (e.g., "RSI below 30")</li>
+      <li>Places a trade automatically when conditions match</li>
+      <li>Sends you an alert when it acts</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h4>🛠️ WHAT YOU NEED</h4>
+    <ul>
+      <li>Claude account</li>
+      <li>A broker/exchange with an <b>API</b> + <b>paper trading</b> mode (examples: Alpaca for US stocks, Binance Testnet for crypto, or your broker's sandbox). <i>API = a way for programs to talk to your broker.</i></li>
+    </ul>
+  </div>
+
+  <div class="step"><div class="stepnum">1</div><div class="stepbody">
+    <h3>Decide your rule in plain English</h3>
+    <p>Before touching AI, write ONE simple rule on paper. Example:</p>
+    <div class="q">"If Bitcoin's price drops 3% in 1 hour, buy ₹500 worth. If it rises 5% from my buy price, sell."</div>
+    <p>Simple rules first. Make it fancy later.</p>
+  </div></div>
+
+  <div class="step"><div class="stepnum">2</div><div class="stepbody">
+    <h3>Get your paper trading API keys</h3>
+    <ul>
+      <li>Sign up on your exchange's <b>testnet / paper</b> mode</li>
+      <li>Find the "API Keys" section in settings</li>
+      <li>Create a key. You'll get an <b>API Key</b> and a <b>Secret</b>. Keep them safe — never post them publicly.</li>
+    </ul>
+  </div></div>
+
+  <div class="step"><div class="stepnum">3</div><div class="stepbody">
+    <h3>Ask Fable 5 to build it</h3>
+    <p>Open Claude and paste this prompt:</p>
+    <div class="prompt">
+      <div class="prompt-bar"><span class="prompt-label">PROMPT 01 — TRADING BOT</span><button class="copybtn">Copy</button></div>
+<pre>I want to build a simple trading bot. I have never coded before,
+so explain everything in simple terms.
+
+My setup:
+- Exchange: [Binance Testnet / Alpaca Paper]
+- Asset: [BTC/USDT or a stock]
+- My rule: [Buy when RSI(14) on the 1-hour chart goes below 30.
+  Sell when it goes above 70. Trade size: small fixed amount.]
+- I want it to run in PAPER TRADING mode only.
+
+Please:
+1. Write the complete bot code in Python
+2. Tell me exactly where to paste my API keys
+3. Give me step-by-step instructions to run it on my laptop
+4. Add a log so I can see every decision the bot makes</pre>
+    </div>
+    <p class="edit-note">✏️ Edit the parts in [brackets] before sending.</p>
+  </div></div>
+
+  <div class="step"><div class="stepnum">4</div><div class="stepbody">
+    <h3>Follow the setup instructions it gives</h3>
+    <p>Fable 5 will tell you to install Python and run 2–3 copy-paste commands. If ANY error appears, just paste the error back into the chat — it will fix it. <b>This back-and-forth is normal!</b></p>
+  </div></div>
+
+  <div class="step"><div class="stepnum">5</div><div class="stepbody">
+    <h3>Watch it run (the fun part)</h3>
+    <p>Let it run in paper mode for at least 1–2 weeks. Check the log daily, then ask:</p>
+    <div class="prompt">
+      <div class="prompt-bar"><span class="prompt-label">PROMPT 02 — BOT REVIEW</span><button class="copybtn">Copy</button></div>
+<pre>Here's my bot's log from this week: [paste log]
+What's working? What should I change?</pre>
+    </div>
+  </div></div>
+
+  <div class="tip"><b>💡 Pro tip:</b> Ask Fable 5 to <b>backtest</b> first: <i>"Test my rule on the last 6 months of historical data and show me how it would have performed."</i> You'll know in 5 minutes if your rule makes sense.</div>
+  <div class="mist"><b>❌ Common mistakes:</b>
+    <ul><li>Using real money on day 1 (please don't 🙏)</li><li>Making rules too complicated in the beginning</li><li>Ignoring the log — the log is where you learn</li></ul>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ================= PROJECT 2 ================= -->
+<section class="project" id="p2">
+  <div class="eyebrow">// PROJECT 02</div>
+  <h2 class="ptitle">Screenshot → Working Website 📸</h2>
+  <p class="pgoal">Take a screenshot of ANY website design → Fable 5 rebuilds it as a real, working website — <b>including the functionalities, not just the look.</b> Buttons click, menus open, forms submit, tabs switch. Fable 5 <i>understands</i> what each element is supposed to do, and builds that behavior. No design file. No code. One picture → fully working website.</p>
+
+  <div class="card">
+    <h4>🛠️ WHAT YOU NEED</h4>
+    <ul>
+      <li>Claude account</li>
+      <li>One screenshot — a website you like, a Dribbble/Pinterest design, or even your <b>hand-drawn sketch</b> (yes, sketches work!)</li>
+    </ul>
+  </div>
+
+  <div class="step"><div class="stepnum">1</div><div class="stepbody">
+    <h3>Take a good screenshot</h3>
+    <p>Full-page screenshots work best. On Chrome: press <b>F12</b> → <b>Ctrl+Shift+P</b> → type "screenshot" → choose <b>"Capture full size screenshot."</b></p>
+  </div></div>
+
+  <div class="step"><div class="stepnum">2</div><div class="stepbody">
+    <h3>Upload it with this prompt</h3>
+    <div class="prompt">
+      <div class="prompt-bar"><span class="prompt-label">PROMPT 03 — SCREENSHOT TO SITE</span><button class="copybtn">Copy</button></div>
+<pre>Here's a screenshot of a website design. Recreate this as a
+complete, working website — replicate the FUNCTIONALITY,
+not just the design.
+
+Requirements:
+- Match the layout, colors, fonts, and spacing as closely as possible
+- REPLICATE ALL FUNCTIONALITIES: every button, menu, dropdown,
+  tab, slider, and form in the screenshot must actually WORK.
+  Look at each element and build the behavior it's meant to have
+- If the design shows interactive sections (image carousel,
+  FAQ accordion, pricing toggle, search bar), build them as
+  fully working features
+- Make it mobile-responsive
+- Use my content instead of theirs:
+  - Business name: [your name]
+  - Tagline: [your tagline]
+  - Services: [list 3 services]
+  - Contact: [your email/phone]
+
+Build it as a single HTML file I can preview right away.</pre>
+    </div>
+    <p class="edit-note">✏️ Attach your screenshot + edit the [brackets].</p>
+  </div></div>
+
+  <div class="step"><div class="stepnum">3</div><div class="stepbody">
+    <h3>Watch it appear — and TEST the functionality!</h3>
+    <p>Fable 5 shows a <b>live preview</b> right inside the chat. Now actually CLICK things — open the menu, switch tabs, toggle the pricing, submit the form. This is the "wait, WHAT?" moment: it didn't just copy the picture, it rebuilt the <i>behavior</i> behind the picture.</p>
+    <p><i>Honest note: front-end functionality (menus, tabs, forms, carousels, calculators) is rebuilt fully working. For backend features like payments or login, Fable 5 builds the working structure — you connect your own accounts (like Razorpay) at the end, and it guides you through that too.</i></p>
+  </div></div>
+
+  <div class="step"><div class="stepnum">4</div><div class="stepbody">
+    <h3>Refine like a designer</h3>
+    <p>Now just talk to it:</p>
+    <ul>
+      <li>"Make the header sticky"</li>
+      <li>"Change the color theme to dark blue and gold"</li>
+      <li>"Add a WhatsApp chat button in the bottom right corner"</li>
+      <li>"Add a photo gallery section"</li>
+    </ul>
+    <p>Each change appears live. This is where it becomes addictive 😄</p>
+  </div></div>
+
+  <div class="step"><div class="stepnum">5</div><div class="stepbody">
+    <h3>Put it online</h3>
+    <p>Ask: <i>"How do I publish this for free?"</i> — Fable 5 will walk you through free hosting (like Netlify or Vercel) step by step. Total time: ~10 minutes.</p>
+  </div></div>
+
+  <div class="tip"><b>💡 Pro tip:</b> Screenshot 2–3 websites and say: <i>"Take the hero section from image 1, the pricing table from image 2, and the footer from image 3."</i> You just became a web designer.</div>
+  <div class="mist"><b>❌ Common mistakes:</b>
+    <ul><li>Blurry/cropped screenshots → give the full page</li><li>Building 10 pages at once → perfect page 1 first, then "now create the About page in the same style"</li></ul>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ================= PROJECT 3 ================= -->
+<section class="project" id="p3">
+  <div class="eyebrow">// PROJECT 03</div>
+  <h2 class="ptitle">Your Second Brain 🧠</h2>
+  <p class="pgoal">All your scattered notes — Google Docs, Notion pages, random files, idea screenshots — connected into ONE brain that Fable 5 knows completely. Ask it anything about your own work and it answers from YOUR notes. Setup: just 4 steps.</p>
+
+  <div class="step"><div class="stepnum">1</div><div class="stepbody">
+    <h3>Create a Project</h3>
+    <p>In Claude, click <b>Projects → New Project</b>. Name it "My Second Brain." A Project is a permanent workspace — everything you add stays there for every future chat.</p>
+  </div></div>
+
+  <div class="step"><div class="stepnum">2</div><div class="stepbody">
+    <h3>Feed it your notes</h3>
+    <ul>
+      <li><b>Upload files:</b> drag your notes, docs, and PDFs into the Project's knowledge section</li>
+      <li><b>Connect your apps:</b> in settings, connect tools like Google Drive so Fable 5 can search your actual documents directly</li>
+    </ul>
+  </div></div>
+
+  <div class="step"><div class="stepnum">3</div><div class="stepbody">
+    <h3>Give your brain its instructions</h3>
+    <p>Paste this into the Project's custom instructions box:</p>
+    <div class="prompt">
+      <div class="prompt-bar"><span class="prompt-label">PROMPT 04 — SECOND BRAIN SETUP</span><button class="copybtn">Copy</button></div>
+<pre>You are my Second Brain. You know all my notes, ideas, and plans.
+
+When I ask something:
+1. Search my notes first and answer from them
+2. Connect related ideas across different notes
+3. If you spot gaps or contradictions in my thinking, tell me
+4. When I share a new idea, tell me which old notes it connects to
+
+Keep answers short and practical.</pre>
+    </div>
+  </div></div>
+
+  <div class="step"><div class="stepnum">4</div><div class="stepbody">
+    <h3>Use it daily</h3>
+    <p>Try these:</p>
+    <ul>
+      <li>"What were all my content ideas from last month? Rank them by potential."</li>
+      <li>"I wrote something about a client pricing strategy somewhere — find it and summarize."</li>
+      <li>"Here's a new idea: [idea]. Does this connect to anything I've noted before?"</li>
+      <li>"What themes keep repeating across all my notes?" ← <b>this one is scary-good</b></li>
+    </ul>
+  </div></div>
+
+  <div class="tip"><b>💡 Pro tip:</b> End each week with: <i>"Here's everything on my mind this week: [brain dump]. Organize it, connect it to my existing notes, and tell me my top 3 priorities."</i> Your brain updates itself.</div>
+  <div class="mist"><b>❌ Common mistakes:</b>
+    <ul><li>Waiting to "clean up" notes first — upload the mess, Fable 5 organizes it</li><li>Creating it and never returning — the magic compounds with daily use</li></ul>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ================= PROJECT 4 ================= -->
+<section class="project" id="p4">
+  <div class="eyebrow">// PROJECT 04</div>
+  <h2 class="ptitle">Self-Improving AI 🔁</h2>
+  <p class="pgoal">Instead of asking one question and closing the tab, you give Fable 5 a <b>goal</b> + a <b>way to check its own work</b>. It loops: does the work → checks it → finds mistakes → improves → repeats. You come back to a finished, polished result.</p>
+
+  <div class="concept">
+    <h4>THE CORE CONCEPT — understand this and you're ahead of 99%</h4>
+    <span class="vs">
+      <span class="bad">Normal use:&nbsp;&nbsp;Question → Answer → Done.</span>
+      <span class="good">Power use:&nbsp;&nbsp;&nbsp;Goal + Success Criteria → AI works → AI grades itself → improves → repeats.</span>
+    </span>
+    <p style="margin-top:10px">The magic ingredient is the <b>success criteria</b> — a checklist the AI uses to judge its own output.</p>
+  </div>
+
+  <div class="step"><div class="stepnum">1</div><div class="stepbody">
+    <h3>Pick a job (not a question)</h3>
+    <p>❌ Bad: "Write me an Instagram caption."<br>✅ Good: "Create my complete 30-day content calendar."</p>
+  </div></div>
+
+  <div class="step"><div class="stepnum">2</div><div class="stepbody">
+    <h3>Write your success criteria</h3>
+    <p>3–5 <b>measurable</b> checks. Example for content:</p>
+    <ul>
+      <li>Every hook must be under 8 words</li>
+      <li>Every post must have a clear CTA</li>
+      <li>No two posts in the same week can use the same format</li>
+      <li>Each idea must target one specific pain point</li>
+    </ul>
+  </div></div>
+
+  <div class="step"><div class="stepnum">3</div><div class="stepbody">
+    <h3>Use the Self-Improvement Prompt (save this!)</h3>
+    <div class="prompt">
+      <div class="prompt-bar"><span class="prompt-label">PROMPT 05 — SELF-IMPROVEMENT LOOP</span><button class="copybtn">Copy</button></div>
+<pre>GOAL: [Create a 30-day Instagram content calendar for my
+fitness coaching brand]
+
+SUCCESS CRITERIA:
+1. [Every hook under 8 words]
+2. [Mix of formats: reels, carousels, stories]
+3. [Each post targets one specific audience pain point]
+4. [Every post has a clear CTA]
+
+PROCESS — follow this loop:
+1. Create the first version
+2. Then STOP and grade your own work against each criterion,
+   scoring 1-10 with honest reasons
+3. Rewrite everything that scored below 8
+4. Repeat the grade-and-improve loop 3 times
+5. Show me only the final version + a summary of what you
+   improved in each round</pre>
+    </div>
+    <p class="edit-note">✏️ Replace GOAL and CRITERIA with your own task.</p>
+  </div></div>
+
+  <div class="step"><div class="stepnum">4</div><div class="stepbody">
+    <h3>Go get a coffee ☕</h3>
+    <p>Fable 5 runs the whole loop itself. When you return, you get <b>version 3 — not version 1.</b> The quality difference is massive.</p>
+  </div></div>
+
+  <div class="step"><div class="stepnum">5</div><div class="stepbody">
+    <h3>Level up: give it real-world checks</h3>
+    <p>For coding tasks, the AI can literally <b>run</b> its own code and fix errors automatically:</p>
+    <div class="prompt">
+      <div class="prompt-bar"><span class="prompt-label">PROMPT 06 — SELF-FIXING CODE</span><button class="copybtn">Copy</button></div>
+<pre>Build [X]. After writing the code, RUN it. If there are any
+errors, fix them and run again. Repeat until it works perfectly.
+Only show me the final working version.</pre>
+    </div>
+    <p>This is "handing over whole jobs" — the AI does the work AND the quality control.</p>
+  </div></div>
+
+  <div class="tip"><b>💡 Pro tip:</b> Add this line to any big task: <i>"Before starting, list 3 ways this task could go wrong, and design your approach to avoid them."</i> Watch the quality jump.</div>
+  <div class="mist"><b>❌ Common mistakes:</b>
+    <ul><li>Vague criteria like "make it good" — AI can't grade "good," it can grade "under 8 words"</li><li>Skipping the loop count — always say how many improvement rounds you want</li></ul>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ================= PROJECT 5 ================= -->
+<section class="project" id="p5">
+  <div class="eyebrow">// PROJECT 05</div>
+  <h2 class="ptitle">Auto-Plan Your Schedule 📅</h2>
+  <p class="pgoal">Every morning: Fable 5 looks at your goals → writes your to-do list → ranks by what actually matters → blocks it into your calendar. You just reply <b>"book it."</b></p>
+
+  <div class="card">
+    <h4>🛠️ WHAT YOU NEED</h4>
+    <ul>
+      <li>Claude account</li>
+      <li>Your calendar (Google Calendar works great)</li>
+      <li>10 minutes one-time setup</li>
+    </ul>
+  </div>
+
+  <div class="step"><div class="stepnum">1</div><div class="stepbody">
+    <h3>Connect your calendar</h3>
+    <p>In Claude's settings, find <b>Connectors</b> and connect your Google Calendar. Fable 5 can now see your schedule and add events (it asks permission before adding anything).</p>
+  </div></div>
+
+  <div class="step"><div class="stepnum">2</div><div class="stepbody">
+    <h3>Create a "Daily Planner" Project</h3>
+    <p>New Project → name it "Daily Planner" → paste this into custom instructions:</p>
+    <div class="prompt">
+      <div class="prompt-bar"><span class="prompt-label">PROMPT 07 — DAILY PLANNER SETUP</span><button class="copybtn">Copy</button></div>
+<pre>You are my daily planning assistant.
+
+MY BIG GOALS:
+1. [Grow my business to X clients]
+2. [Post content daily]
+3. [Health: gym 4x per week]
+
+MY RULES:
+- Deep work in the mornings (9am-12pm), meetings after 2pm
+- Max 3 important tasks per day
+- Always include a 30-min lunch break
+- Never schedule anything after 8pm
+
+When I say "plan my day":
+1. Check my calendar for existing commitments
+2. Ask me what's on my plate (or use what I tell you)
+3. Rank tasks: what moves my big goals forward goes FIRST
+4. Propose a time-blocked schedule
+5. When I reply "book it" — add every block to my calendar</pre>
+    </div>
+    <p class="edit-note">✏️ Put YOUR real goals and rules in the brackets.</p>
+  </div></div>
+
+  <div class="step"><div class="stepnum">3</div><div class="stepbody">
+    <h3>Your new morning routine (2 minutes)</h3>
+    <div class="prompt">
+      <div class="prompt-bar"><span class="prompt-label">PROMPT 08 — DAILY TRIGGER</span><button class="copybtn">Copy</button></div>
+<pre>Plan my day. On my plate today: [client call follow-up,
+edit reel, write proposal, gym, reply to 20 DMs]</pre>
+    </div>
+  </div></div>
+
+  <div class="step"><div class="stepnum">4</div><div class="stepbody">
+    <h3>Review the plan it proposes</h3>
+    <div class="q">9:00–10:30 → Write proposal (moves Goal #1 — highest priority)<br>
+    10:30–11:00 → Edit reel (Goal #2)<br>
+    11:00–11:15 → Client follow-up call<br>
+    2:00–2:30 → Batch-reply DMs<br>
+    6:00–7:00 → Gym (Goal #3)<br>
+    <b>"Reply 'book it' and I'll add these to your calendar."</b></div>
+  </div></div>
+
+  <div class="step"><div class="stepnum">5</div><div class="stepbody">
+    <h3>Reply "book it" ✅</h3>
+    <p>Done. Your calendar fills itself. One creator called this <b>"the single most powerful thing I run"</b> — because it removes the hardest part of productivity: <i>deciding what matters.</i></p>
+  </div></div>
+
+  <div class="tip"><b>💡 Pro tip:</b> Every Friday ask: <i>"Look at my calendar for this week. How did I actually spend my time vs my 3 big goals? What should change next week?"</i> — Now you have an AI accountability coach too.</div>
+  <div class="mist"><b>❌ Common mistakes:</b>
+    <ul><li>Listing 15 tasks per day — the whole point is ranking and cutting</li><li>Not updating your big goals when they change</li></ul>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ================= BONUS ================= -->
+<section class="project" id="bonus">
+  <div class="eyebrow">// BONUS</div>
+  <h2 class="ptitle">🎁 The 6th Hack</h2>
+  <p class="pgoal"><b>Combine Project 3 + Project 5.</b> Connect your Second Brain with your daily planning, and ask:</p>
+  <div class="prompt">
+    <div class="prompt-bar"><span class="prompt-label">PROMPT 09 — THE 6TH HACK</span><button class="copybtn">Copy</button></div>
+<pre>Look at my notes and goals in my Second Brain. Based on
+everything I've said I want this year — what is the ONE task
+I keep avoiding that would change everything? Schedule it
+for tomorrow morning.</pre>
+  </div>
+  <p class="pgoal" style="margin-top:14px">This one question has genuinely changed how people work. Try it once. 👀</p>
+
+  <div class="footer">
+    <h2>That's a wrap! 🙏</h2>
+    <p>You now have 5 (+1) complete systems. Don't try all 5 today — <b style="color:var(--text)">pick ONE</b>, build it this week, then come back for the next.</p>
+    <p>📲 Follow for daily AI hacks in Tamil · 💬 DM a screenshot of what you built — best ones get featured! · 🔄 Share this guide with one friend who needs it</p>
+    <a class="handle" href="https://instagram.com/code_mode_official" target="_blank" rel="noopener">@code_mode_official</a>
+  </div>
+
+  <p class="disc">Disclaimer: This guide is for education only. Trading involves risk of loss — always paper trade first and never invest money you can't afford to lose. Nothing here is financial advice. AI outputs can contain errors — always review important work. · Built with ❤️ by Code Mode · 2026</p>
+</section>
+
+</main>
+
+<script>
+// Copy buttons
+document.querySelectorAll('.prompt').forEach(box=>{
+  const btn = box.querySelector('.copybtn');
+  const pre = box.querySelector('pre');
+  btn.addEventListener('click', async ()=>{
+    try{
+      await navigator.clipboard.writeText(pre.innerText);
+    }catch(e){
+      // fallback for file:// contexts
+      const r=document.createRange(); r.selectNodeContents(pre);
+      const s=window.getSelection(); s.removeAllRanges(); s.addRange(r);
+      document.execCommand('copy'); s.removeAllRanges();
+    }
+    const old=btn.textContent;
+    btn.textContent='Copied ✓'; btn.classList.add('done');
+    setTimeout(()=>{btn.textContent=old; btn.classList.remove('done');},1600);
+  });
+});
+
+// Scrollspy for nav
+const links=[...document.querySelectorAll('nav a')];
+const secs=links.map(a=>document.querySelector(a.getAttribute('href')));
+const spy=new IntersectionObserver(entries=>{
+  entries.forEach(en=>{
+    if(en.isIntersecting){
+      links.forEach(l=>l.classList.toggle('active', l.getAttribute('href')==='#'+en.target.id));
+      const active=document.querySelector('nav a.active');
+      if(active) active.scrollIntoView({block:'nearest',inline:'center',behavior:'smooth'});
+    }
+  });
+},{rootMargin:'-20% 0px -70% 0px'});
+secs.forEach(s=>s&&spy.observe(s));
+</script>
+</body>
+</html>

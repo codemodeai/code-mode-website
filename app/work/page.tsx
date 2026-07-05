@@ -129,6 +129,7 @@ function Navbar() {
         <Link href="/work" className="text-gray-900 font-semibold">Work</Link>
         <Link href="/#services" className="hover:text-gray-900 transition-colors">Services</Link>
         <Link href="/#products" className="hover:text-gray-900 transition-colors">Products</Link>
+        <Link href="/resources" className="hover:text-gray-900 transition-colors">Resources</Link>
         <Link href="/start" className="hover:text-gray-900 transition-colors">Contact</Link>
       </div>
 
