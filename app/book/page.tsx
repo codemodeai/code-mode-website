@@ -76,16 +76,16 @@ export default function BookPage() {
       {/* Background glow */}
       <div className="pointer-events-none fixed inset-0 overflow-hidden">
         <div className="absolute left-1/2 top-0 -translate-x-1/2 h-[500px] w-[800px] rounded-full"
-          style={{ background: "radial-gradient(circle,rgba(249,115,22,0.1) 0%,transparent 70%)", filter: "blur(80px)" }} />
+          style={{ background: "radial-gradient(circle,rgba(157,124,232,0.1) 0%,transparent 70%)", filter: "blur(80px)" }} />
       </div>
 
       {/* Nav */}
       <nav className="relative z-10 flex items-center justify-between px-8 py-5 border-b border-white/5">
         <Link href="/" className="flex items-center gap-2.5">
           <div className="flex items-center rounded-full px-[5px] py-[4px]"
-            style={{ background: "linear-gradient(135deg,#fff8f3,#fff1e6)", border: "1.5px solid rgba(249,115,22,0.6)", width: 60, height: 26 }}>
-            <span className="font-mono font-bold text-[9px] select-none text-center w-7" style={{ color: "#ea580c" }}>&lt;/&gt;</span>
-            <div className="rounded-full flex-shrink-0" style={{ width: 18, height: 18, background: "radial-gradient(circle at 35% 35%,#fde68a,#f97316 55%,#c2410c)" }} />
+            style={{ background: "linear-gradient(135deg,#faf8ff,#f3eefe)", border: "1.5px solid rgba(157,124,232,0.6)", width: 60, height: 26 }}>
+            <span className="font-mono font-bold text-[9px] select-none text-center w-7" style={{ color: "#6d42be" }}>&lt;/&gt;</span>
+            <div className="rounded-full flex-shrink-0" style={{ width: 18, height: 18, background: "radial-gradient(circle at 35% 35%,#ede6fb,#9d7ce8 55%,#7d5ad0)" }} />
           </div>
           <span className="text-[15px] font-bold">Code<span className="text-orange-500">Mode</span></span>
         </Link>
@@ -99,7 +99,7 @@ export default function BookPage() {
           <span className="inline-flex items-center gap-2 rounded-full border border-orange-500/30 bg-orange-500/10 px-4 py-1.5 text-[11px] font-bold uppercase tracking-widest text-orange-400 mb-6">
             <span className="h-1.5 w-1.5 rounded-full bg-orange-500 animate-pulse" /> Free strategy call · 30 min
           </span>
-          <h1 className="text-4xl md:text-6xl font-black leading-tight mb-4">
+          <h1 className="font-display text-4xl md:text-6xl font-semibold leading-tight mb-4">
             Book a call with<br /><span className="text-orange-500">CodeMode.</span>
           </h1>
           <p className="text-[15px] text-gray-400 max-w-md mx-auto">
@@ -185,7 +185,7 @@ export default function BookPage() {
                   <button
                     onClick={() => setStep("form")}
                     className="rounded-xl bg-orange-500 px-10 py-3.5 text-[14px] font-bold text-white hover:bg-orange-400 transition-colors"
-                    style={{ boxShadow: "0 0 24px rgba(249,115,22,0.35)" }}
+                    style={{ boxShadow: "0 0 24px rgba(157,124,232,0.35)" }}
                   >
                     Continue → {selectedDate.toLocaleDateString("en-IN", { day: "numeric", month: "short" })} at {selectedSlot}
                   </button>
@@ -260,7 +260,7 @@ export default function BookPage() {
                     onClick={handleBook}
                     disabled={!formValid || loading}
                     className="w-full rounded-xl bg-orange-500 py-3.5 text-[14px] font-bold text-white hover:bg-orange-400 transition-colors disabled:opacity-50 disabled:cursor-not-allowed mt-2"
-                    style={{ boxShadow: "0 0 24px rgba(249,115,22,0.3)" }}
+                    style={{ boxShadow: "0 0 24px rgba(157,124,232,0.3)" }}
                   >
                     {loading ? "Booking…" : "Confirm Booking →"}
                   </button>

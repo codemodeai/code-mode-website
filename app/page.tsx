@@ -96,15 +96,15 @@ function CodeModeLogo() {
         animate={{ opacity: [0.3, 0.6, 0.3] }}
         transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
         className="absolute inset-0 rounded-full blur-[8px]"
-        style={{ background: "rgba(249,115,22,0.3)" }}
+        style={{ background: "rgba(157,124,232,0.3)" }}
       />
       {/* Toggle pill */}
       <div
         className="relative flex items-center rounded-full px-[5px] py-[4px]"
         style={{
-          background: "linear-gradient(135deg, #fff8f3 0%, #fff1e6 100%)",
-          border: "1.5px solid rgba(249,115,22,0.6)",
-          boxShadow: `0 0 0 1px rgba(249,115,22,0.1), 0 0 10px rgba(249,115,22,0.4), 0 0 24px rgba(249,115,22,0.2), inset 0 0 6px rgba(249,115,22,0.06)`,
+          background: "linear-gradient(135deg, #faf8ff 0%, #f3eefe 100%)",
+          border: "1.5px solid rgba(157,124,232,0.6)",
+          boxShadow: `0 0 0 1px rgba(157,124,232,0.1), 0 0 10px rgba(157,124,232,0.4), 0 0 24px rgba(157,124,232,0.2), inset 0 0 6px rgba(157,124,232,0.06)`,
           width: 68,
           height: 30,
         }}
@@ -115,8 +115,8 @@ function CodeModeLogo() {
             style={{
               fontSize: 10,
               letterSpacing: "-0.5px",
-              color: "#ea580c",
-              textShadow: "0 0 6px rgba(249,115,22,0.7)",
+              color: "#6d42be",
+              textShadow: "0 0 6px rgba(157,124,232,0.7)",
             }}
           >
             &lt;/&gt;
@@ -125,9 +125,9 @@ function CodeModeLogo() {
         <motion.div
           animate={{
             boxShadow: [
-              "0 0 6px 2px rgba(249,115,22,0.6), 0 0 14px 4px rgba(249,115,22,0.3)",
-              "0 0 10px 4px rgba(249,115,22,0.85), 0 0 22px 8px rgba(249,115,22,0.45)",
-              "0 0 6px 2px rgba(249,115,22,0.6), 0 0 14px 4px rgba(249,115,22,0.3)",
+              "0 0 6px 2px rgba(157,124,232,0.6), 0 0 14px 4px rgba(157,124,232,0.3)",
+              "0 0 10px 4px rgba(157,124,232,0.85), 0 0 22px 8px rgba(157,124,232,0.45)",
+              "0 0 6px 2px rgba(157,124,232,0.6), 0 0 14px 4px rgba(157,124,232,0.3)",
             ],
           }}
           transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
@@ -135,7 +135,7 @@ function CodeModeLogo() {
           style={{
             width: 22,
             height: 22,
-            background: "radial-gradient(circle at 35% 35%, #fde68a, #f97316 55%, #c2410c)",
+            background: "radial-gradient(circle at 35% 35%, #ede6fb, #bda2ef 55%, #7d5ad0)",
           }}
         />
       </div>
@@ -168,7 +168,7 @@ export default function Home() {
         <div
           className="absolute -left-64 top-0 h-[900px] w-[900px] rounded-full"
           style={{
-            background: "radial-gradient(circle, rgba(251,146,60,0.28) 0%, rgba(249,115,22,0.12) 45%, transparent 72%)",
+            background: "radial-gradient(circle, rgba(189,162,239,0.28) 0%, rgba(157,124,232,0.12) 45%, transparent 72%)",
             filter: "blur(100px)",
           }}
         />
@@ -176,7 +176,7 @@ export default function Home() {
         <div
           className="absolute -right-64 top-1/4 h-[860px] w-[860px] rounded-full"
           style={{
-            background: "radial-gradient(circle, rgba(251,113,133,0.22) 0%, rgba(244,63,94,0.1) 45%, transparent 72%)",
+            background: "radial-gradient(circle, rgba(201,180,241,0.22) 0%, rgba(130,87,214,0.1) 45%, transparent 72%)",
             filter: "blur(110px)",
           }}
         />
@@ -184,7 +184,7 @@ export default function Home() {
         <div
           className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[1000px] w-[1000px] rounded-full"
           style={{
-            background: "radial-gradient(circle, rgba(254,215,170,0.18) 0%, rgba(251,146,60,0.06) 50%, transparent 72%)",
+            background: "radial-gradient(circle, rgba(237,230,251,0.18) 0%, rgba(189,162,239,0.06) 50%, transparent 72%)",
             filter: "blur(120px)",
           }}
         />
@@ -192,7 +192,7 @@ export default function Home() {
         <div
           className="absolute -top-40 -left-20 h-[600px] w-[700px] rounded-full"
           style={{
-            background: "radial-gradient(ellipse, rgba(253,186,116,0.2) 0%, transparent 65%)",
+            background: "radial-gradient(ellipse, rgba(222,210,247,0.2) 0%, transparent 65%)",
             filter: "blur(90px)",
           }}
         />
@@ -315,7 +315,7 @@ export default function Home() {
             initial={{ y: 60, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.75, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
-            className="text-5xl md:text-7xl lg:text-[82px] font-black leading-[1.05] tracking-tight text-gray-900"
+            className="font-display text-5xl md:text-7xl lg:text-[82px] font-semibold leading-[1.05] tracking-tight text-gray-900"
           >
             We build systems
           </motion.h1>
@@ -325,7 +325,7 @@ export default function Home() {
             initial={{ y: 60, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.75, delay: 0.38, ease: [0.16, 1, 0.3, 1] }}
-            className="text-5xl md:text-7xl lg:text-[82px] font-black leading-[1.05] tracking-tight"
+            className="font-display text-5xl md:text-7xl lg:text-[82px] font-semibold leading-[1.05] tracking-tight"
           >
             that{" "}
             <span className="relative inline-block">
@@ -437,10 +437,10 @@ export default function Home() {
             >
               {/* Decorative orange orb inside card */}
               <div className="absolute -bottom-16 -right-16 h-56 w-56 rounded-full"
-                style={{ background: "radial-gradient(circle, rgba(249,115,22,0.35) 0%, transparent 70%)" }} />
+                style={{ background: "radial-gradient(circle, rgba(157,124,232,0.35) 0%, transparent 70%)" }} />
               <div>
                 <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-orange-400 mb-6">Our mission</p>
-                <h2 className="text-3xl md:text-4xl font-black text-white leading-[1.1] tracking-tight">
+                <h2 className="font-display text-3xl md:text-4xl font-semibold text-white leading-[1.15] tracking-tight">
                   We turn ambitious ideas into{" "}
                   <span className="text-orange-400">software that ships</span>{" "}
                   — and keeps shipping.
@@ -539,7 +539,7 @@ export default function Home() {
               </div>
               <div>
                 <div className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-orange-50">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#f97316" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9d7ce8" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
                     <circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
                   </svg>
                 </div>
@@ -562,7 +562,7 @@ export default function Home() {
             >
               <div>
                 <div className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-orange-50">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#f97316" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9d7ce8" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
                   </svg>
                 </div>
@@ -603,7 +603,7 @@ export default function Home() {
               </p>
               <motion.a
                 href="/start"
-                whileHover={{ scale: 1.05, backgroundColor: "#f97316" }}
+                whileHover={{ scale: 1.05, backgroundColor: "#8257d6" }}
                 whileTap={{ scale: 0.97 }}
                 className="shrink-0 rounded-xl bg-orange-500 px-7 py-3.5 text-sm font-bold text-white transition-colors"
               >
@@ -662,7 +662,7 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                className="text-4xl md:text-5xl font-black text-gray-900 leading-tight tracking-tight"
+                className="font-display text-4xl md:text-5xl font-semibold text-gray-900 leading-tight tracking-tight"
               >
                 Products we&apos;ve<br />shipped.
               </motion.h2>
@@ -699,7 +699,7 @@ export default function Home() {
                 className="absolute inset-0 w-full h-full object-cover opacity-40"
               />
               <div className="absolute inset-0" style={{
-                backgroundImage: "radial-gradient(circle at 70% 50%, rgba(249,115,22,0.25) 0%, transparent 60%), radial-gradient(circle at 20% 80%, rgba(251,113,133,0.15) 0%, transparent 50%)"
+                backgroundImage: "radial-gradient(circle at 70% 50%, rgba(157,124,232,0.25) 0%, transparent 60%), radial-gradient(circle at 20% 80%, rgba(201,180,241,0.15) 0%, transparent 50%)"
               }} />
             </div>
             <div className="relative p-10 md:p-14 flex flex-col justify-between h-full" style={{ minHeight: 420 }}>
@@ -783,7 +783,7 @@ export default function Home() {
                 <span className="h-px w-8 bg-orange-400" />
                 <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-orange-500">Our products</span>
               </motion.div>
-              <motion.h2 initial={{ opacity:0,y:20 }} whileInView={{ opacity:1,y:0 }} viewport={{ once:true }} transition={{ duration:0.6,ease:[0.16,1,0.3,1] }} className="text-4xl md:text-5xl font-black text-gray-900 leading-tight tracking-tight">
+              <motion.h2 initial={{ opacity:0,y:20 }} whileInView={{ opacity:1,y:0 }} viewport={{ once:true }} transition={{ duration:0.6,ease:[0.16,1,0.3,1] }} className="font-display text-4xl md:text-5xl font-semibold text-gray-900 leading-tight tracking-tight">
                 Tools we built.<br />So you don&apos;t have to.
               </motion.h2>
             </div>
@@ -814,9 +814,9 @@ export default function Home() {
                 tagColor: "bg-orange-50 text-orange-600 border-orange-200",
                 desc: "An AI-powered intelligence layer that sees across your business — surfacing insights, automating decisions, and flagging risks before they happen.",
                 features: ["Real-time AI insights", "Predictive analytics", "Multi-source data sync", "Natural language queries", "Slack & email alerts"],
-                accent: "from-orange-400 to-rose-500",
+                accent: "from-brand-400 to-brand-600",
                 image: "/product-seer.png",
-                imageBg: "#f97753",
+                imageBg: "#9d7ce8",
                 badge: "In Progress",
               },
               {
@@ -888,7 +888,7 @@ export default function Home() {
       {/* ── Services ── */}
       <section id="services" className="relative z-10 bg-white px-6 md:px-16 py-28 overflow-hidden">
         <div className="pointer-events-none absolute inset-0 overflow-hidden">
-          <div className="absolute -right-40 top-0 h-[500px] w-[500px] rounded-full" style={{ background:"radial-gradient(circle,rgba(249,115,22,0.08) 0%,transparent 70%)",filter:"blur(80px)" }} />
+          <div className="absolute -right-40 top-0 h-[500px] w-[500px] rounded-full" style={{ background:"radial-gradient(circle,rgba(157,124,232,0.08) 0%,transparent 70%)",filter:"blur(80px)" }} />
         </div>
         <div className="relative max-w-6xl mx-auto">
           {/* Header */}
@@ -898,7 +898,7 @@ export default function Home() {
                 <span className="h-px w-8 bg-orange-400" />
                 <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-orange-500">What we do</span>
               </motion.div>
-              <motion.h2 initial={{ opacity:0,y:20 }} whileInView={{ opacity:1,y:0 }} viewport={{ once:true }} transition={{ duration:0.6,ease:[0.16,1,0.3,1] }} className="text-4xl md:text-5xl font-black text-gray-900 leading-tight tracking-tight">
+              <motion.h2 initial={{ opacity:0,y:20 }} whileInView={{ opacity:1,y:0 }} viewport={{ once:true }} transition={{ duration:0.6,ease:[0.16,1,0.3,1] }} className="font-display text-4xl md:text-5xl font-semibold text-gray-900 leading-tight tracking-tight">
                 Services built for<br />ambitious teams.
               </motion.h2>
             </div>
@@ -930,24 +930,24 @@ export default function Home() {
                     <rect x="118" y="41" width="80" height="6" rx="3" fill="#818cf8" opacity="0.5"/>
                     {/* Code lines */}
                     <rect x="60" y="74" width="55" height="7" rx="3" fill="#c084fc"/>
-                    <rect x="122" y="74" width="38" height="7" rx="3" fill="#f97316"/>
+                    <rect x="122" y="74" width="38" height="7" rx="3" fill="#9d7ce8"/>
                     <rect x="60" y="89" width="18" height="7" rx="3" fill="#60a5fa"/>
                     <rect x="84" y="89" width="70" height="7" rx="3" fill="#c084fc" opacity="0.8"/>
                     <rect x="60" y="104" width="45" height="7" rx="3" fill="#34d399"/>
-                    <rect x="112" y="104" width="28" height="7" rx="3" fill="#f97316" opacity="0.9"/>
+                    <rect x="112" y="104" width="28" height="7" rx="3" fill="#9d7ce8" opacity="0.9"/>
                     <rect x="60" y="119" width="80" height="7" rx="3" fill="#818cf8" opacity="0.7"/>
                     <rect x="60" y="134" width="36" height="7" rx="3" fill="#60a5fa" opacity="0.9"/>
                     <rect x="103" y="134" width="50" height="7" rx="3" fill="#34d399" opacity="0.8"/>
-                    <rect x="60" y="149" width="25" height="7" rx="3" fill="#f97316" opacity="0.7"/>
+                    <rect x="60" y="149" width="25" height="7" rx="3" fill="#9d7ce8" opacity="0.7"/>
                     {/* Floating card */}
                     <rect x="188" y="92" width="76" height="70" rx="10" fill="#312e81" stroke="#4f46e5" strokeWidth="1.5"/>
-                    <rect x="196" y="104" width="42" height="6" rx="3" fill="#f97316"/>
+                    <rect x="196" y="104" width="42" height="6" rx="3" fill="#9d7ce8"/>
                     <rect x="196" y="116" width="30" height="5" rx="2" fill="#818cf8" opacity="0.7"/>
-                    <rect x="196" y="127" width="54" height="14" rx="7" fill="#f97316" opacity="0.9"/>
+                    <rect x="196" y="127" width="54" height="14" rx="7" fill="#9d7ce8" opacity="0.9"/>
                     <rect x="202" y="131" width="30" height="6" rx="3" fill="#fff" opacity="0.9"/>
                     {/* Sparkles */}
                     <circle cx="268" cy="36" r="5" fill="#c084fc"/>
-                    <circle cx="50" cy="170" r="4" fill="#f97316"/>
+                    <circle cx="50" cy="170" r="4" fill="#9d7ce8"/>
                     <circle cx="282" cy="158" r="6" fill="#34d399" opacity="0.8"/>
                     <circle cx="30" cy="90" r="3" fill="#60a5fa" opacity="0.7"/>
                   </svg>
@@ -963,17 +963,17 @@ export default function Home() {
                 illustration: (
                   <svg viewBox="0 0 320 200" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
                     {/* Pulse rings */}
-                    <circle cx="160" cy="100" r="70" stroke="#f97316" strokeWidth="1" opacity="0.15"/>
-                    <circle cx="160" cy="100" r="52" stroke="#f97316" strokeWidth="1" opacity="0.25"/>
+                    <circle cx="160" cy="100" r="70" stroke="#9d7ce8" strokeWidth="1" opacity="0.15"/>
+                    <circle cx="160" cy="100" r="52" stroke="#9d7ce8" strokeWidth="1" opacity="0.25"/>
                     {/* Central brain node */}
-                    <circle cx="160" cy="100" r="34" fill="#1e293b" stroke="#f97316" strokeWidth="2"/>
-                    <circle cx="160" cy="100" r="22" fill="#f97316" opacity="0.15"/>
-                    <path d="M148 93 Q153 82 160 85 Q167 82 172 93 Q177 102 172 111 Q167 120 160 117 Q153 120 148 111 Q143 102 148 93Z" fill="#f97316" opacity="0.6"/>
-                    <circle cx="160" cy="100" r="9" fill="#f97316"/>
+                    <circle cx="160" cy="100" r="34" fill="#1e293b" stroke="#9d7ce8" strokeWidth="2"/>
+                    <circle cx="160" cy="100" r="22" fill="#9d7ce8" opacity="0.15"/>
+                    <path d="M148 93 Q153 82 160 85 Q167 82 172 93 Q177 102 172 111 Q167 120 160 117 Q153 120 148 111 Q143 102 148 93Z" fill="#9d7ce8" opacity="0.6"/>
+                    <circle cx="160" cy="100" r="9" fill="#9d7ce8"/>
                     <circle cx="160" cy="100" r="4" fill="#fff"/>
                     {/* Orbiting nodes */}
-                    <circle cx="76" cy="58" r="20" fill="#1e293b" stroke="#fb923c" strokeWidth="2"/>
-                    <text x="76" y="63" textAnchor="middle" fontSize="13" fill="#fb923c" fontWeight="bold">AI</text>
+                    <circle cx="76" cy="58" r="20" fill="#1e293b" stroke="#bda2ef" strokeWidth="2"/>
+                    <text x="76" y="63" textAnchor="middle" fontSize="13" fill="#bda2ef" fontWeight="bold">AI</text>
                     <circle cx="244" cy="58" r="20" fill="#1e293b" stroke="#c084fc" strokeWidth="2"/>
                     <text x="244" y="63" textAnchor="middle" fontSize="10" fill="#c084fc" fontWeight="bold">LLM</text>
                     <circle cx="76" cy="143" r="20" fill="#1e293b" stroke="#34d399" strokeWidth="2"/>
@@ -981,20 +981,20 @@ export default function Home() {
                     <circle cx="244" cy="143" r="20" fill="#1e293b" stroke="#60a5fa" strokeWidth="2"/>
                     <text x="244" y="148" textAnchor="middle" fontSize="10" fill="#60a5fa" fontWeight="bold">API</text>
                     {/* Connecting lines */}
-                    <line x1="95" y1="66" x2="130" y2="86" stroke="#f97316" strokeWidth="1.5" strokeDasharray="5 3" opacity="0.8"/>
+                    <line x1="95" y1="66" x2="130" y2="86" stroke="#9d7ce8" strokeWidth="1.5" strokeDasharray="5 3" opacity="0.8"/>
                     <line x1="225" y1="66" x2="190" y2="86" stroke="#c084fc" strokeWidth="1.5" strokeDasharray="5 3" opacity="0.8"/>
                     <line x1="95" y1="135" x2="130" y2="114" stroke="#34d399" strokeWidth="1.5" strokeDasharray="5 3" opacity="0.8"/>
                     <line x1="225" y1="135" x2="190" y2="114" stroke="#60a5fa" strokeWidth="1.5" strokeDasharray="5 3" opacity="0.8"/>
                     {/* Dots on lines */}
-                    <circle cx="113" cy="76" r="3" fill="#f97316"/>
+                    <circle cx="113" cy="76" r="3" fill="#9d7ce8"/>
                     <circle cx="207" cy="76" r="3" fill="#c084fc"/>
                     <circle cx="113" cy="124" r="3" fill="#34d399"/>
                     <circle cx="207" cy="124" r="3" fill="#60a5fa"/>
                     {/* Corner accents */}
-                    <circle cx="160" cy="22" r="4" fill="#f97316" opacity="0.6"/>
-                    <circle cx="160" cy="178" r="4" fill="#f97316" opacity="0.6"/>
-                    <circle cx="30" cy="100" r="4" fill="#f97316" opacity="0.4"/>
-                    <circle cx="290" cy="100" r="4" fill="#f97316" opacity="0.4"/>
+                    <circle cx="160" cy="22" r="4" fill="#9d7ce8" opacity="0.6"/>
+                    <circle cx="160" cy="178" r="4" fill="#9d7ce8" opacity="0.6"/>
+                    <circle cx="30" cy="100" r="4" fill="#9d7ce8" opacity="0.4"/>
+                    <circle cx="290" cy="100" r="4" fill="#9d7ce8" opacity="0.4"/>
                   </svg>
                 ),
               },
@@ -1014,13 +1014,13 @@ export default function Home() {
                     <rect x="28" y="40" width="264" height="12" fill="#065f46"/>
                     <rect x="42" y="30" width="70" height="12" rx="6" fill="#059669" opacity="0.6"/>
                     <circle cx="262" cy="36" r="6" fill="#34d399" opacity="0.8"/>
-                    <circle cx="278" cy="36" r="6" fill="#f97316" opacity="0.6"/>
+                    <circle cx="278" cy="36" r="6" fill="#9d7ce8" opacity="0.6"/>
                     {/* Sidebar */}
                     <rect x="28" y="52" width="58" height="128" fill="#065f46"/>
                     <rect x="36" y="64" width="36" height="8" rx="4" fill="#34d399" opacity="0.9"/>
                     <rect x="36" y="80" width="28" height="8" rx="4" fill="#6ee7b7" opacity="0.5"/>
                     <rect x="36" y="96" width="34" height="8" rx="4" fill="#6ee7b7" opacity="0.5"/>
-                    <rect x="36" y="112" width="24" height="8" rx="4" fill="#f97316" opacity="0.8"/>
+                    <rect x="36" y="112" width="24" height="8" rx="4" fill="#9d7ce8" opacity="0.8"/>
                     <rect x="36" y="128" width="30" height="8" rx="4" fill="#6ee7b7" opacity="0.4"/>
                     <rect x="36" y="144" width="36" height="8" rx="4" fill="#6ee7b7" opacity="0.3"/>
                     {/* Column headers */}
@@ -1028,8 +1028,8 @@ export default function Home() {
                     <rect x="98" y="60" width="28" height="8" rx="3" fill="#34d399"/>
                     <rect x="158" y="57" width="58" height="15" rx="5" fill="#d97706" opacity="0.8"/>
                     <rect x="162" y="60" width="28" height="8" rx="3" fill="#fbbf24"/>
-                    <rect x="222" y="57" width="58" height="15" rx="5" fill="#f97316" opacity="0.8"/>
-                    <rect x="226" y="60" width="28" height="8" rx="3" fill="#fb923c"/>
+                    <rect x="222" y="57" width="58" height="15" rx="5" fill="#9d7ce8" opacity="0.8"/>
+                    <rect x="226" y="60" width="28" height="8" rx="3" fill="#bda2ef"/>
                     {/* Kanban cards col 1 */}
                     <rect x="94" y="78" width="58" height="40" rx="7" fill="#065f46" stroke="#059669" strokeWidth="1.2"/>
                     <rect x="100" y="85" width="38" height="6" rx="3" fill="#34d399"/>
@@ -1041,17 +1041,17 @@ export default function Home() {
                     {/* Kanban cards col 2 */}
                     <rect x="158" y="78" width="58" height="40" rx="7" fill="#064e3b" stroke="#d97706" strokeWidth="1.2"/>
                     <rect x="164" y="85" width="34" height="6" rx="3" fill="#fbbf24"/>
-                    <rect x="164" y="96" width="22" height="5" rx="2" fill="#fde68a" opacity="0.6"/>
+                    <rect x="164" y="96" width="22" height="5" rx="2" fill="#ede6fb" opacity="0.6"/>
                     <circle cx="202" cy="108" r="5" fill="#d97706"/>
                     {/* Kanban cards col 3 (active/won) */}
-                    <rect x="222" y="78" width="58" height="96" rx="7" fill="#431407" stroke="#f97316" strokeWidth="1.5"/>
-                    <rect x="228" y="85" width="34" height="6" rx="3" fill="#f97316"/>
-                    <rect x="228" y="96" width="42" height="5" rx="2" fill="#fdba74" opacity="0.6"/>
-                    <rect x="228" y="107" width="20" height="5" rx="2" fill="#fdba74" opacity="0.4"/>
-                    <rect x="228" y="122" width="44" height="16" rx="7" fill="#f97316"/>
+                    <rect x="222" y="78" width="58" height="96" rx="7" fill="#2a2140" stroke="#9d7ce8" strokeWidth="1.5"/>
+                    <rect x="228" y="85" width="34" height="6" rx="3" fill="#9d7ce8"/>
+                    <rect x="228" y="96" width="42" height="5" rx="2" fill="#d3c1f3" opacity="0.6"/>
+                    <rect x="228" y="107" width="20" height="5" rx="2" fill="#d3c1f3" opacity="0.4"/>
+                    <rect x="228" y="122" width="44" height="16" rx="7" fill="#9d7ce8"/>
                     <rect x="234" y="127" width="22" height="6" rx="3" fill="#fff" opacity="0.9"/>
-                    <rect x="228" y="145" width="36" height="6" rx="3" fill="#fdba74" opacity="0.5"/>
-                    <rect x="228" y="157" width="26" height="8" rx="4" fill="#f97316" opacity="0.4"/>
+                    <rect x="228" y="145" width="36" height="6" rx="3" fill="#d3c1f3" opacity="0.5"/>
+                    <rect x="228" y="157" width="26" height="8" rx="4" fill="#9d7ce8" opacity="0.4"/>
                   </svg>
                 ),
               },
@@ -1076,8 +1076,8 @@ export default function Home() {
                     {/* App icons row 1 */}
                     <rect x="118" y="52" width="26" height="26" rx="8" fill="#2563eb"/>
                     <rect x="122" y="58" width="18" height="12" rx="3" fill="#93c5fd" opacity="0.8"/>
-                    <rect x="150" y="52" width="26" height="26" rx="8" fill="#f97316"/>
-                    <rect x="154" y="56" width="18" height="18" rx="4" fill="#fed7aa" opacity="0.7"/>
+                    <rect x="150" y="52" width="26" height="26" rx="8" fill="#9d7ce8"/>
+                    <rect x="154" y="56" width="18" height="18" rx="4" fill="#e3d8f8" opacity="0.7"/>
                     <rect x="182" y="52" width="26" height="26" rx="8" fill="#059669"/>
                     <rect x="186" y="56" width="18" height="18" rx="4" fill="#6ee7b7" opacity="0.7"/>
                     {/* App icons row 2 */}
@@ -1099,18 +1099,18 @@ export default function Home() {
                     <rect x="240" y="66" width="48" height="34" rx="7" fill="#1e3a8a"/>
                     <rect x="246" y="72" width="36" height="5" rx="2" fill="#60a5fa" opacity="0.7"/>
                     <rect x="246" y="81" width="26" height="5" rx="2" fill="#93c5fd" opacity="0.4"/>
-                    <rect x="240" y="106" width="22" height="22" rx="6" fill="#f97316"/>
+                    <rect x="240" y="106" width="22" height="22" rx="6" fill="#9d7ce8"/>
                     <rect x="266" y="106" width="22" height="22" rx="6" fill="#7c3aed"/>
                     <rect x="240" y="134" width="48" height="16" rx="7" fill="#2563eb"/>
                     <rect x="248" y="139" width="24" height="6" rx="3" fill="#fff" opacity="0.8"/>
                     {/* Floating notification */}
                     <rect x="20" y="55" width="82" height="50" rx="12" fill="#1e3a8a" stroke="#3b82f6" strokeWidth="1.5"/>
-                    <circle cx="38" cy="72" r="10" fill="#f97316"/>
+                    <circle cx="38" cy="72" r="10" fill="#9d7ce8"/>
                     <rect x="52" y="65" width="40" height="6" rx="3" fill="#60a5fa"/>
                     <rect x="52" y="75" width="30" height="5" rx="2" fill="#3b82f6" opacity="0.5"/>
                     <rect x="52" y="85" width="20" height="5" rx="2" fill="#34d399" opacity="0.6"/>
                     {/* Decorative dots */}
-                    <circle cx="20" cy="145" r="5" fill="#f97316" opacity="0.7"/>
+                    <circle cx="20" cy="145" r="5" fill="#9d7ce8" opacity="0.7"/>
                     <circle cx="302" cy="40" r="5" fill="#3b82f6" opacity="0.7"/>
                     <circle cx="302" cy="160" r="4" fill="#7c3aed" opacity="0.6"/>
                     <circle cx="70" cy="170" r="4" fill="#34d399" opacity="0.5"/>
@@ -1194,8 +1194,8 @@ export default function Home() {
       <section id="contact" className="relative z-10 bg-gray-900 px-6 md:px-16 py-28 overflow-hidden">
         {/* Background decoration */}
         <div className="pointer-events-none absolute inset-0 overflow-hidden">
-          <div className="absolute -left-40 bottom-0 h-[600px] w-[600px] rounded-full" style={{ background:"radial-gradient(circle,rgba(249,115,22,0.2) 0%,transparent 70%)",filter:"blur(100px)" }} />
-          <div className="absolute -right-40 top-0 h-[500px] w-[500px] rounded-full" style={{ background:"radial-gradient(circle,rgba(251,113,133,0.12) 0%,transparent 70%)",filter:"blur(100px)" }} />
+          <div className="absolute -left-40 bottom-0 h-[600px] w-[600px] rounded-full" style={{ background:"radial-gradient(circle,rgba(157,124,232,0.2) 0%,transparent 70%)",filter:"blur(100px)" }} />
+          <div className="absolute -right-40 top-0 h-[500px] w-[500px] rounded-full" style={{ background:"radial-gradient(circle,rgba(201,180,241,0.12) 0%,transparent 70%)",filter:"blur(100px)" }} />
           <div className="absolute inset-0" style={{ backgroundImage:"radial-gradient(circle at 1px 1px,rgba(255,255,255,0.03) 1px,transparent 0)",backgroundSize:"32px 32px" }} />
         </div>
         <div className="relative max-w-6xl mx-auto">
@@ -1210,7 +1210,7 @@ export default function Home() {
 
             {/* Left */}
             <motion.div initial={{ opacity:0,y:24 }} whileInView={{ opacity:1,y:0 }} viewport={{ once:true }} transition={{ duration:0.65,ease:[0.16,1,0.3,1] }}>
-              <h2 className="text-4xl md:text-5xl font-black text-white leading-[1.08] tracking-tight mb-6">
+              <h2 className="font-display text-4xl md:text-5xl font-semibold text-white leading-[1.08] tracking-tight mb-6">
                 Let&apos;s build<br />something <span className="text-orange-400">great.</span>
               </h2>
               <p className="text-[15px] text-white/50 leading-relaxed mb-12 max-w-sm">
@@ -1295,10 +1295,10 @@ export default function Home() {
 
               <motion.button
                 type="submit"
-                whileHover={{ scale:1.02, boxShadow:"0 0 40px rgba(249,115,22,0.5)" }}
+                whileHover={{ scale:1.02, boxShadow:"0 0 40px rgba(157,124,232,0.5)" }}
                 whileTap={{ scale:0.98 }}
                 className="w-full rounded-xl bg-orange-500 py-4 text-[14px] font-bold text-white hover:bg-orange-400 transition-colors mt-1"
-                style={{ boxShadow:"0 0 24px rgba(249,115,22,0.35)" }}
+                style={{ boxShadow:"0 0 24px rgba(157,124,232,0.35)" }}
               >
                 Send message ↗
               </motion.button>

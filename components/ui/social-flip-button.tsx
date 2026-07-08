@@ -105,7 +105,7 @@ function FlipCard({
           style={{
             backfaceVisibility: "hidden",
             transform: "rotateY(180deg)",
-            background: "linear-gradient(135deg, #f97316, #ea580c)",
+            background: "linear-gradient(135deg, #bda2ef, #7d5ad0)",
           }}
         >
           {item.icon}
@@ -203,13 +203,13 @@ export default function SocialFlipButton({
         <div className="absolute -inset-[1px] overflow-hidden rounded-2xl pointer-events-none">
           <motion.div
             className="absolute top-0 left-0 h-[1px] w-full"
-            style={{ background: "linear-gradient(to right, transparent, rgba(249,115,22,0.7), transparent)" }}
+            style={{ background: "linear-gradient(to right, transparent, rgba(157,124,232,0.7), transparent)" }}
             animate={{ x: ["-100%", "100%"] }}
             transition={{ duration: 2.5, repeat: Infinity, ease: "linear" }}
           />
           <motion.div
             className="absolute bottom-0 left-0 h-[1px] w-full"
-            style={{ background: "linear-gradient(to right, transparent, rgba(249,115,22,0.7), transparent)" }}
+            style={{ background: "linear-gradient(to right, transparent, rgba(157,124,232,0.7), transparent)" }}
             animate={{ x: ["100%", "-100%"] }}
             transition={{ duration: 2.5, repeat: Infinity, ease: "linear" }}
           />

@@ -39,7 +39,7 @@ const projects = [
     desc: "AI-powered customer support agent trained on custom knowledge bases. Deflects 70% of inbound tickets with zero human intervention — integrated with Intercom, Slack and email.",
     tags: ["OpenAI", "Supabase", "Next.js", "Twilio", "Python"],
     metrics: [{ v: "70%", l: "Ticket deflection" }, { v: "24/7", l: "Always on" }, { v: "4 wks", l: "Full deployment" }],
-    cardBg: "linear-gradient(135deg,#fef3c7,#fde68a)",
+    cardBg: "linear-gradient(135deg,#fef3c7,#ede6fb)",
     blob: "radial-gradient(circle at 20% 80%,rgba(245,158,11,0.4),transparent 65%)",
     featured: false,
     image: "/work-crm.jpg",
@@ -79,7 +79,7 @@ const projects = [
     tags: ["Next.js", "PostgreSQL", "Stripe", "Razorpay", "AWS"],
     metrics: [{ v: "500+", l: "Vendors onboarded" }, { v: "₹10Cr+", l: "GMV in Y1" }, { v: "6 wks", l: "MVP to launch" }],
     cardBg: "linear-gradient(135deg,#fff7ed,#ffedd5)",
-    blob: "radial-gradient(circle at 80% 40%,rgba(249,115,22,0.2),transparent 65%)",
+    blob: "radial-gradient(circle at 80% 40%,rgba(157,124,232,0.2),transparent 65%)",
     featured: false,
     image: "/work-ai.jpg",
   },
@@ -100,25 +100,25 @@ function Navbar() {
             animate={{ opacity: [0.3, 0.6, 0.3] }}
             transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
             className="absolute inset-0 rounded-full blur-[8px]"
-            style={{ background: "rgba(249,115,22,0.3)" }}
+            style={{ background: "rgba(157,124,232,0.3)" }}
           />
           <div
             className="relative flex items-center rounded-full px-[5px] py-[4px]"
             style={{
-              background: "linear-gradient(135deg,#fff8f3,#fff1e6)",
-              border: "1.5px solid rgba(249,115,22,0.6)",
-              boxShadow: "0 0 10px rgba(249,115,22,0.4), 0 0 24px rgba(249,115,22,0.2)",
+              background: "linear-gradient(135deg,#faf8ff,#f3eefe)",
+              border: "1.5px solid rgba(157,124,232,0.6)",
+              boxShadow: "0 0 10px rgba(157,124,232,0.4), 0 0 24px rgba(157,124,232,0.2)",
               width: 68, height: 30,
             }}
           >
             <div className="flex items-center justify-center" style={{ width: 32, height: 22 }}>
-              <span className="font-mono font-bold select-none" style={{ fontSize: 10, color: "#ea580c", textShadow: "0 0 6px rgba(249,115,22,0.7)" }}>&lt;/&gt;</span>
+              <span className="font-mono font-bold select-none" style={{ fontSize: 10, color: "#6d42be", textShadow: "0 0 6px rgba(157,124,232,0.7)" }}>&lt;/&gt;</span>
             </div>
             <motion.div
-              animate={{ boxShadow: ["0 0 6px 2px rgba(249,115,22,0.6)","0 0 10px 4px rgba(249,115,22,0.85)","0 0 6px 2px rgba(249,115,22,0.6)"] }}
+              animate={{ boxShadow: ["0 0 6px 2px rgba(157,124,232,0.6)","0 0 10px 4px rgba(157,124,232,0.85)","0 0 6px 2px rgba(157,124,232,0.6)"] }}
               transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
               className="rounded-full flex-shrink-0"
-              style={{ width: 22, height: 22, background: "radial-gradient(circle at 35% 35%,#fde68a,#f97316 55%,#c2410c)" }}
+              style={{ width: 22, height: 22, background: "radial-gradient(circle at 35% 35%,#ede6fb,#9d7ce8 55%,#7d5ad0)" }}
             />
           </div>
         </div>
@@ -157,7 +157,7 @@ export default function WorkPage() {
       {/* Background blobs */}
       <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden">
         <div className="absolute -left-64 top-0 h-[700px] w-[700px] rounded-full"
-          style={{ background: "radial-gradient(circle,rgba(251,146,60,0.15) 0%,transparent 70%)", filter: "blur(100px)" }} />
+          style={{ background: "radial-gradient(circle,rgba(189,162,239,0.15) 0%,transparent 70%)", filter: "blur(100px)" }} />
         <div className="absolute -right-64 bottom-1/4 h-[600px] w-[600px] rounded-full"
           style={{ background: "radial-gradient(circle,rgba(251,113,133,0.1) 0%,transparent 70%)", filter: "blur(110px)" }} />
       </div>
@@ -186,7 +186,7 @@ export default function WorkPage() {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-            className="text-5xl md:text-7xl font-black text-white leading-[1.05] tracking-tight drop-shadow-lg"
+            className="font-display text-5xl md:text-7xl font-semibold text-white leading-[1.05] tracking-tight drop-shadow-lg"
           >
             Products we&apos;ve <span className="text-orange-400">shipped.</span>
           </motion.h1>
@@ -216,7 +216,7 @@ export default function WorkPage() {
           {/* Visual */}
           <div className="absolute inset-0">
             <Image src={featured.image!} alt={featured.title} fill className="object-cover opacity-30" />
-            <div className="absolute inset-0" style={{ backgroundImage: "radial-gradient(circle at 75% 50%,rgba(249,115,22,0.28) 0%,transparent 55%), radial-gradient(circle at 15% 80%,rgba(251,113,133,0.15) 0%,transparent 50%)" }} />
+            <div className="absolute inset-0" style={{ backgroundImage: "radial-gradient(circle at 75% 50%,rgba(157,124,232,0.28) 0%,transparent 55%), radial-gradient(circle at 15% 80%,rgba(251,113,133,0.15) 0%,transparent 50%)" }} />
           </div>
 
           <div className="relative p-10 md:p-16 flex flex-col justify-between" style={{ minHeight: 500 }}>
@@ -226,7 +226,7 @@ export default function WorkPage() {
             </div>
 
             <div>
-              <h2 className="text-5xl md:text-6xl font-black text-white leading-tight tracking-tight mb-4">{featured.title}</h2>
+              <h2 className="font-display text-5xl md:text-6xl font-semibold text-white leading-tight tracking-tight mb-4">{featured.title}</h2>
               <p className="text-orange-300/80 text-[15px] font-medium mb-6">{featured.tagline}</p>
               <p className="text-white/45 text-[15px] max-w-xl leading-relaxed mb-10">{featured.desc}</p>
 
@@ -332,10 +332,10 @@ export default function WorkPage() {
           <div className="flex flex-col sm:flex-row gap-3 shrink-0">
             <motion.a
               href="/start"
-              whileHover={{ scale: 1.04, boxShadow: "0 0 32px rgba(249,115,22,0.4)" }}
+              whileHover={{ scale: 1.04, boxShadow: "0 0 32px rgba(157,124,232,0.4)" }}
               whileTap={{ scale: 0.97 }}
               className="rounded-xl bg-orange-500 px-7 py-3.5 text-sm font-bold text-white hover:bg-orange-400 transition-colors"
-              style={{ boxShadow: "0 0 20px rgba(249,115,22,0.3)" }}
+              style={{ boxShadow: "0 0 20px rgba(157,124,232,0.3)" }}
             >
               Start a project ↗
             </motion.a>

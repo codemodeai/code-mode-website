@@ -69,11 +69,11 @@ function Navbar() {
   return (
     <nav className="sticky top-0 z-50 flex items-center justify-between px-8 py-5 md:px-16 bg-white/90 backdrop-blur-md border-b border-black/5">
       <Link href="/" className="flex items-center gap-3">
-        <div className="relative flex items-center rounded-full px-[5px] py-[4px]" style={{ background:"linear-gradient(135deg,#fff8f3,#fff1e6)",border:"1.5px solid rgba(249,115,22,0.6)",boxShadow:"0 0 10px rgba(249,115,22,0.4)",width:68,height:30 }}>
+        <div className="relative flex items-center rounded-full px-[5px] py-[4px]" style={{ background:"linear-gradient(135deg,#faf8ff,#f3eefe)",border:"1.5px solid rgba(157,124,232,0.6)",boxShadow:"0 0 10px rgba(157,124,232,0.4)",width:68,height:30 }}>
           <div className="flex items-center justify-center" style={{ width:32,height:22 }}>
-            <span className="font-mono font-bold text-[10px] select-none" style={{ color:"#ea580c" }}>&lt;/&gt;</span>
+            <span className="font-mono font-bold text-[10px] select-none" style={{ color:"#6d42be" }}>&lt;/&gt;</span>
           </div>
-          <div className="rounded-full flex-shrink-0" style={{ width:22,height:22,background:"radial-gradient(circle at 35% 35%,#fde68a,#f97316 55%,#c2410c)" }} />
+          <div className="rounded-full flex-shrink-0" style={{ width:22,height:22,background:"radial-gradient(circle at 35% 35%,#ede6fb,#9d7ce8 55%,#7d5ad0)" }} />
         </div>
         <span className="text-[17px] font-bold tracking-tight text-gray-900">Code<span className="text-orange-500">Mode</span></span>
       </Link>
@@ -98,7 +98,7 @@ export default function ServicesPage() {
     <main className="min-h-screen bg-white text-gray-900">
       <Navbar />
       <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden">
-        <div className="absolute -left-64 top-0 h-[700px] w-[700px] rounded-full" style={{ background:"radial-gradient(circle,rgba(251,146,60,0.12) 0%,transparent 70%)",filter:"blur(100px)" }} />
+        <div className="absolute -left-64 top-0 h-[700px] w-[700px] rounded-full" style={{ background:"radial-gradient(circle,rgba(189,162,239,0.12) 0%,transparent 70%)",filter:"blur(100px)" }} />
         <div className="absolute -right-64 bottom-1/4 h-[600px] w-[600px] rounded-full" style={{ background:"radial-gradient(circle,rgba(139,92,246,0.07) 0%,transparent 70%)",filter:"blur(110px)" }} />
       </div>
       <div className="relative z-10 max-w-6xl mx-auto px-6 md:px-16 py-20">
@@ -110,7 +110,7 @@ export default function ServicesPage() {
             <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-orange-500">What we do</span>
           </div>
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
-            <h1 className="text-5xl md:text-7xl font-black leading-[1.05] tracking-tight">
+            <h1 className="font-display text-5xl md:text-7xl font-semibold leading-[1.05] tracking-tight">
               Services for<br /><span className="text-orange-500">ambitious</span> teams.
             </h1>
             <p className="max-w-xs text-[15px] text-gray-400 leading-relaxed">
@@ -191,7 +191,7 @@ export default function ServicesPage() {
             <p className="text-white/40 text-[14px] mt-2">Free 30-minute call. No commitment.</p>
           </div>
           <Link href="/start">
-            <motion.span whileHover={{ scale:1.04,boxShadow:"0 0 32px rgba(249,115,22,0.4)" }} className="inline-block rounded-xl bg-orange-500 px-8 py-4 text-sm font-bold text-white cursor-pointer" style={{ boxShadow:"0 0 20px rgba(249,115,22,0.3)" }}>
+            <motion.span whileHover={{ scale:1.04,boxShadow:"0 0 32px rgba(157,124,232,0.4)" }} className="inline-block rounded-xl bg-orange-500 px-8 py-4 text-sm font-bold text-white cursor-pointer" style={{ boxShadow:"0 0 20px rgba(157,124,232,0.3)" }}>
               Book a free call ↗
             </motion.span>
           </Link>

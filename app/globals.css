@@ -1,30 +1,86 @@
 @import "tailwindcss";
 
+/* ─────────────────────────────────────────────────────────────
+   LOBBY — Lavender Brand Tokens
+   Primary #BDA2EF · Accent #B29CF8 · Muted #D6D1E2
+   Text #020202 · Secondary #313131 · Bg #FEFEFE · Surface #F8F8F8
+   ───────────────────────────────────────────────────────────── */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #fefefe;
+  --foreground: #020202;
+  --surface: #f8f8f8;
+
+  /* Brand lavender ramp (anchored on Lobby #BDA2EF) */
+  --lav-50:  #f6f3fd;
+  --lav-100: #ede6fb;
+  --lav-200: #ded2f7;
+  --lav-300: #c9b4f1;
+  --lav-400: #bda2ef; /* Lobby PRIMARY */
+  --lav-500: #9d7ce8;
+  --lav-600: #8257d6;
+  --lav-700: #6d42be;
+  --lav-800: #57339a;
+  --lav-900: #45297a;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  --color-surface: var(--surface);
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --font-sans: var(--font-sans);
+  --font-display: var(--font-display);
+  --font-mono: var(--font-mono);
+
+  /* Brand color scale (usable as bg-brand-500, text-brand-600, …) */
+  --color-brand-50:  var(--lav-50);
+  --color-brand-100: var(--lav-100);
+  --color-brand-200: var(--lav-200);
+  --color-brand-300: var(--lav-300);
+  --color-brand-400: var(--lav-400);
+  --color-brand-500: var(--lav-500);
+  --color-brand-600: var(--lav-600);
+  --color-brand-700: var(--lav-700);
+  --color-brand-800: var(--lav-800);
+  --color-brand-900: var(--lav-900);
+
+  /* Remap Tailwind's built-in orange scale → lavender.
+     Reskins every existing `orange-*` utility site-wide in one place. */
+  --color-orange-50:  var(--lav-50);
+  --color-orange-100: var(--lav-100);
+  --color-orange-200: var(--lav-200);
+  --color-orange-300: var(--lav-300);
+  --color-orange-400: var(--lav-400);
+  --color-orange-500: var(--lav-500);
+  --color-orange-600: var(--lav-700); /* deeper for text contrast on white */
+  --color-orange-700: var(--lav-800);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), "Segoe UI", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
+/* Classic display headings */
+.font-display {
+  font-family: var(--font-display), Georgia, "Times New Roman", serif;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+::selection {
+  background: var(--lav-200);
+  color: var(--lav-900);
+}
+
+/* ── Marquee ── */
 @keyframes marquee-left {
   0%   { transform: translateX(0); }
   100% { transform: translateX(-50%); }
@@ -42,4 +98,13 @@ body {
 .marquee-track:hover .animate-marquee-left,
 .marquee-track:hover .animate-marquee-right {
   animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

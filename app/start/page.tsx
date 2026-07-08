@@ -30,11 +30,11 @@ function Navbar() {
   return (
     <nav className="sticky top-0 z-50 flex items-center justify-between px-8 py-5 md:px-16 bg-white/90 backdrop-blur-md border-b border-black/5">
       <Link href="/" className="flex items-center gap-3">
-        <div className="relative flex items-center rounded-full px-[5px] py-[4px]" style={{ background: "linear-gradient(135deg,#fff8f3,#fff1e6)", border: "1.5px solid rgba(249,115,22,0.6)", boxShadow: "0 0 10px rgba(249,115,22,0.4)", width: 68, height: 30 }}>
+        <div className="relative flex items-center rounded-full px-[5px] py-[4px]" style={{ background: "linear-gradient(135deg,#faf8ff,#f3eefe)", border: "1.5px solid rgba(157,124,232,0.6)", boxShadow: "0 0 10px rgba(157,124,232,0.4)", width: 68, height: 30 }}>
           <div className="flex items-center justify-center" style={{ width: 32, height: 22 }}>
-            <span className="font-mono font-bold text-[10px] select-none" style={{ color: "#ea580c" }}>&lt;/&gt;</span>
+            <span className="font-mono font-bold text-[10px] select-none" style={{ color: "#6d42be" }}>&lt;/&gt;</span>
           </div>
-          <div className="rounded-full flex-shrink-0" style={{ width: 22, height: 22, background: "radial-gradient(circle at 35% 35%,#fde68a,#f97316 55%,#c2410c)" }} />
+          <div className="rounded-full flex-shrink-0" style={{ width: 22, height: 22, background: "radial-gradient(circle at 35% 35%,#ede6fb,#9d7ce8 55%,#7d5ad0)" }} />
         </div>
         <span className="text-[17px] font-bold tracking-tight text-gray-900">Code<span className="text-orange-500">Mode</span></span>
       </Link>
@@ -261,9 +261,9 @@ function ProjectBriefForm() {
         </div>
       </div>
 
-      <motion.button type="submit" disabled={submitting} whileHover={{ scale: 1.02, boxShadow: "0 0 32px rgba(249,115,22,0.35)" }} whileTap={{ scale: 0.98 }}
+      <motion.button type="submit" disabled={submitting} whileHover={{ scale: 1.02, boxShadow: "0 0 32px rgba(157,124,232,0.35)" }} whileTap={{ scale: 0.98 }}
         className="w-full rounded-xl bg-orange-500 py-4 text-[15px] font-bold text-white hover:bg-orange-400 transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
-        style={{ boxShadow: "0 0 20px rgba(249,115,22,0.25)" }}>
+        style={{ boxShadow: "0 0 20px rgba(157,124,232,0.25)" }}>
         {submitting ? "Submitting…" : "Submit project brief ↗"}
       </motion.button>
       <p className="text-center text-[11px] text-gray-400">We review every brief personally. You&apos;ll hear from us within 24 hours.</p>
@@ -329,11 +329,11 @@ function BookCallForm() {
           </div>
           <motion.button
             onClick={() => { if (name && email) setStep("done"); }}
-            whileHover={{ scale: 1.02, boxShadow: "0 0 32px rgba(249,115,22,0.35)" }}
+            whileHover={{ scale: 1.02, boxShadow: "0 0 32px rgba(157,124,232,0.35)" }}
             whileTap={{ scale: 0.98 }}
             disabled={!name || !email}
             className="w-full rounded-xl bg-orange-500 py-4 text-[15px] font-bold text-white disabled:opacity-40 disabled:cursor-not-allowed transition-all"
-            style={{ boxShadow: "0 0 20px rgba(249,115,22,0.25)" }}>
+            style={{ boxShadow: "0 0 20px rgba(157,124,232,0.25)" }}>
             Confirm booking ↗
           </motion.button>
           <p className="text-center text-[11px] text-gray-400">You&apos;ll receive a calendar invite with a meeting link immediately.</p>
@@ -422,7 +422,7 @@ export default function StartPage() {
 
       {/* Background */}
       <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden">
-        <div className="absolute -left-64 top-0 h-[700px] w-[700px] rounded-full" style={{ background: "radial-gradient(circle,rgba(251,146,60,0.12) 0%,transparent 70%)", filter: "blur(100px)" }} />
+        <div className="absolute -left-64 top-0 h-[700px] w-[700px] rounded-full" style={{ background: "radial-gradient(circle,rgba(189,162,239,0.12) 0%,transparent 70%)", filter: "blur(100px)" }} />
         <div className="absolute -right-64 bottom-0 h-[600px] w-[600px] rounded-full" style={{ background: "radial-gradient(circle,rgba(251,113,133,0.08) 0%,transparent 70%)", filter: "blur(110px)" }} />
       </div>
 
@@ -434,7 +434,7 @@ export default function StartPage() {
             <span className="h-px w-8 bg-orange-400" />
             <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-orange-500">Get started</span>
           </div>
-          <h1 className="text-4xl md:text-6xl font-black leading-tight tracking-tight text-gray-900 mb-4">
+          <h1 className="font-display text-4xl md:text-6xl font-semibold leading-tight tracking-tight text-gray-900 mb-4">
             Let&apos;s build something<br />
             <span className="text-orange-500">exceptional.</span>
           </h1>

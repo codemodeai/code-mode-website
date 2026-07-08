@@ -43,12 +43,12 @@ function Navbar() {
     >
       <Link href="/" className="flex items-center gap-3">
         <div className="relative flex items-center">
-          <motion.div animate={{ opacity: [0.3, 0.6, 0.3] }} transition={{ duration: 2.5, repeat: Infinity }} className="absolute inset-0 rounded-full blur-[8px]" style={{ background: "rgba(249,115,22,0.3)" }} />
-          <div className="relative flex items-center rounded-full px-[5px] py-[4px]" style={{ background: "linear-gradient(135deg,#fff8f3,#fff1e6)", border: "1.5px solid rgba(249,115,22,0.6)", boxShadow: "0 0 10px rgba(249,115,22,0.4)", width: 68, height: 30 }}>
+          <motion.div animate={{ opacity: [0.3, 0.6, 0.3] }} transition={{ duration: 2.5, repeat: Infinity }} className="absolute inset-0 rounded-full blur-[8px]" style={{ background: "rgba(157,124,232,0.3)" }} />
+          <div className="relative flex items-center rounded-full px-[5px] py-[4px]" style={{ background: "linear-gradient(135deg,#faf8ff,#f3eefe)", border: "1.5px solid rgba(157,124,232,0.6)", boxShadow: "0 0 10px rgba(157,124,232,0.4)", width: 68, height: 30 }}>
             <div className="flex items-center justify-center" style={{ width: 32, height: 22 }}>
-              <span className="font-mono font-bold text-[10px] select-none" style={{ color: "#ea580c", textShadow: "0 0 6px rgba(249,115,22,0.7)" }}>&lt;/&gt;</span>
+              <span className="font-mono font-bold text-[10px] select-none" style={{ color: "#6d42be", textShadow: "0 0 6px rgba(157,124,232,0.7)" }}>&lt;/&gt;</span>
             </div>
-            <motion.div animate={{ boxShadow: ["0 0 6px 2px rgba(249,115,22,0.6)", "0 0 10px 4px rgba(249,115,22,0.85)", "0 0 6px 2px rgba(249,115,22,0.6)"] }} transition={{ duration: 2, repeat: Infinity }} className="rounded-full flex-shrink-0" style={{ width: 22, height: 22, background: "radial-gradient(circle at 35% 35%,#fde68a,#f97316 55%,#c2410c)" }} />
+            <motion.div animate={{ boxShadow: ["0 0 6px 2px rgba(157,124,232,0.6)", "0 0 10px 4px rgba(157,124,232,0.85)", "0 0 6px 2px rgba(157,124,232,0.6)"] }} transition={{ duration: 2, repeat: Infinity }} className="rounded-full flex-shrink-0" style={{ width: 22, height: 22, background: "radial-gradient(circle at 35% 35%,#ede6fb,#9d7ce8 55%,#7d5ad0)" }} />
           </div>
         </div>
         <span className="text-[17px] font-bold tracking-tight text-gray-900">Code<span className="text-orange-500">Mode</span></span>
@@ -124,7 +124,7 @@ export default function ResourcesPage() {
       <Navbar />
 
       <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden">
-        <div className="absolute -left-64 top-0 h-[700px] w-[700px] rounded-full" style={{ background: "radial-gradient(circle,rgba(251,146,60,0.12) 0%,transparent 70%)", filter: "blur(100px)" }} />
+        <div className="absolute -left-64 top-0 h-[700px] w-[700px] rounded-full" style={{ background: "radial-gradient(circle,rgba(189,162,239,0.12) 0%,transparent 70%)", filter: "blur(100px)" }} />
         <div className="absolute -right-64 bottom-0 h-[600px] w-[600px] rounded-full" style={{ background: "radial-gradient(circle,rgba(139,92,246,0.08) 0%,transparent 70%)", filter: "blur(110px)" }} />
       </div>
 
@@ -137,7 +137,7 @@ export default function ResourcesPage() {
             <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-orange-500">Resources</span>
           </div>
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
-            <h1 className="text-5xl md:text-7xl font-black leading-[1.05] tracking-tight text-gray-900">
+            <h1 className="font-display text-5xl md:text-7xl font-semibold leading-[1.05] tracking-tight text-gray-900">
               Guides &amp; playbooks.<br />
               <span className="text-orange-500">Build with AI.</span>
             </h1>

@@ -40,7 +40,7 @@ function LoginForm() {
       {/* Background glow */}
       <div className="pointer-events-none fixed inset-0 overflow-hidden">
         <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[600px] w-[600px] rounded-full"
-          style={{ background: "radial-gradient(circle,rgba(249,115,22,0.12) 0%,transparent 70%)", filter: "blur(80px)" }} />
+          style={{ background: "radial-gradient(circle,rgba(157,124,232,0.12) 0%,transparent 70%)", filter: "blur(80px)" }} />
       </div>
 
       <motion.div
@@ -55,12 +55,12 @@ function LoginForm() {
           {/* Logo */}
           <div className="flex items-center gap-3 mb-10">
             <div className="flex items-center rounded-full px-[5px] py-[4px]"
-              style={{ background: "linear-gradient(135deg,#fff8f3,#fff1e6)", border: "1.5px solid rgba(249,115,22,0.6)", width: 60, height: 26 }}>
+              style={{ background: "linear-gradient(135deg,#faf8ff,#f3eefe)", border: "1.5px solid rgba(157,124,232,0.6)", width: 60, height: 26 }}>
               <div className="flex items-center justify-center" style={{ width: 28, height: 18 }}>
-                <span className="font-mono font-bold text-[9px] select-none" style={{ color: "#ea580c" }}>&lt;/&gt;</span>
+                <span className="font-mono font-bold text-[9px] select-none" style={{ color: "#6d42be" }}>&lt;/&gt;</span>
               </div>
               <div className="rounded-full flex-shrink-0"
-                style={{ width: 18, height: 18, background: "radial-gradient(circle at 35% 35%,#fde68a,#f97316 55%,#c2410c)" }} />
+                style={{ width: 18, height: 18, background: "radial-gradient(circle at 35% 35%,#ede6fb,#9d7ce8 55%,#7d5ad0)" }} />
             </div>
             <span className="text-[15px] font-bold text-white">Code<span className="text-orange-500">Mode</span></span>
             <span className="ml-auto text-[10px] font-bold uppercase tracking-widest rounded-full border border-orange-500/30 bg-orange-500/10 px-2 py-0.5 text-orange-400">Admin</span>
@@ -99,7 +99,7 @@ function LoginForm() {
               type="submit"
               disabled={loading || !password}
               className="rounded-xl bg-orange-500 py-3 text-[14px] font-bold text-white hover:bg-orange-400 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-              style={{ boxShadow: "0 0 20px rgba(249,115,22,0.3)" }}
+              style={{ boxShadow: "0 0 20px rgba(157,124,232,0.3)" }}
             >
               {loading ? "Verifying…" : "Enter Dashboard →"}
             </motion.button>

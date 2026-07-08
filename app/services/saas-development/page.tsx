@@ -21,9 +21,9 @@ export default function SaaSDevelopmentPage() {
     <main className="min-h-screen bg-white text-gray-900">
       <nav className="sticky top-0 z-50 flex items-center justify-between px-8 py-5 md:px-16 bg-white/90 backdrop-blur-md border-b border-black/5">
         <Link href="/" className="flex items-center gap-3">
-          <div className="relative flex items-center rounded-full px-[5px] py-[4px]" style={{ background:"linear-gradient(135deg,#fff8f3,#fff1e6)",border:"1.5px solid rgba(249,115,22,0.6)",boxShadow:"0 0 10px rgba(249,115,22,0.4)",width:68,height:30 }}>
-            <div className="flex items-center justify-center" style={{ width:32,height:22 }}><span className="font-mono font-bold text-[10px]" style={{ color:"#ea580c" }}>&lt;/&gt;</span></div>
-            <div className="rounded-full" style={{ width:22,height:22,background:"radial-gradient(circle at 35% 35%,#fde68a,#f97316 55%,#c2410c)" }} />
+          <div className="relative flex items-center rounded-full px-[5px] py-[4px]" style={{ background:"linear-gradient(135deg,#faf8ff,#f3eefe)",border:"1.5px solid rgba(157,124,232,0.6)",boxShadow:"0 0 10px rgba(157,124,232,0.4)",width:68,height:30 }}>
+            <div className="flex items-center justify-center" style={{ width:32,height:22 }}><span className="font-mono font-bold text-[10px]" style={{ color:"#6d42be" }}>&lt;/&gt;</span></div>
+            <div className="rounded-full" style={{ width:22,height:22,background:"radial-gradient(circle at 35% 35%,#ede6fb,#9d7ce8 55%,#7d5ad0)" }} />
           </div>
           <span className="text-[17px] font-bold tracking-tight">Code<span className="text-orange-500">Mode</span></span>
         </Link>
@@ -40,7 +40,7 @@ export default function SaaSDevelopmentPage() {
               <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-white text-3xl shadow-md">⚡</div>
               <span className="rounded-full border border-violet-200 bg-violet-50 px-3 py-1 text-[11px] font-bold uppercase tracking-wide text-violet-600">SaaS Development</span>
             </div>
-            <h1 className="text-5xl md:text-7xl font-black leading-[1.05] tracking-tight text-gray-900 mb-4">SaaS Product<br />Development</h1>
+            <h1 className="font-display text-5xl md:text-7xl font-semibold leading-[1.05] tracking-tight text-gray-900 mb-4">SaaS Product<br />Development</h1>
             <p className="text-xl text-violet-600 font-semibold mb-6">From idea to production-ready product.</p>
             <p className="text-[16px] text-gray-500 max-w-xl leading-relaxed mb-10">We own the full stack — architecture, backend, frontend, auth, billing and devops. You get a scalable SaaS without hiring a team of 10.</p>
             <div className="flex flex-wrap gap-8 mb-10">

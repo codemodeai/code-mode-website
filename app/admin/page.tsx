@@ -112,9 +112,9 @@ export default function AdminDashboard() {
         <div className="px-6 py-6 border-b border-white/5">
           <div className="flex items-center gap-2.5 mb-2">
             <div className="flex items-center rounded-full px-[4px] py-[3px]"
-              style={{ background: "linear-gradient(135deg,#fff8f3,#fff1e6)", border: "1.5px solid rgba(249,115,22,0.6)", width: 52, height: 22 }}>
-              <span className="font-mono font-bold text-[8px] select-none text-center w-7" style={{ color: "#ea580c" }}>&lt;/&gt;</span>
-              <div className="rounded-full" style={{ width: 16, height: 16, background: "radial-gradient(circle at 35% 35%,#fde68a,#f97316 55%,#c2410c)" }} />
+              style={{ background: "linear-gradient(135deg,#faf8ff,#f3eefe)", border: "1.5px solid rgba(157,124,232,0.6)", width: 52, height: 22 }}>
+              <span className="font-mono font-bold text-[8px] select-none text-center w-7" style={{ color: "#6d42be" }}>&lt;/&gt;</span>
+              <div className="rounded-full" style={{ width: 16, height: 16, background: "radial-gradient(circle at 35% 35%,#ede6fb,#9d7ce8 55%,#7d5ad0)" }} />
             </div>
             <span className="text-[14px] font-bold">Code<span className="text-orange-500">Mode</span></span>
           </div>
