@@ -15,9 +15,24 @@ type Resource = {
   accent: string;
   emoji: string;
   badge?: string | null;
+  cta?: string;
 };
 
 const resources: Resource[] = [
+  {
+    slug: "automation-playbook",
+    href: "/guides/codemode-automation-playbook.pdf",
+    external: true,
+    kind: "Reference Guide",
+    kindColor: "bg-orange-50 text-orange-600 border-orange-200",
+    title: "The Business Automation Playbook",
+    desc: "The exact automation system every type of business actually needs — and precisely where growth is leaking away. Maps the universal six-layer spine, the product-vs-service split, then a detailed playbook for fifteen business types.",
+    meta: "15 business types · Product & service · PDF",
+    accent: "from-orange-400 to-purple-600",
+    emoji: "📈",
+    badge: "New",
+    cta: "Download the PDF",
+  },
   {
     slug: "skill-acceleration-system",
     href: "/guides/skill-acceleration-system.html",
@@ -29,7 +44,7 @@ const resources: Resource[] = [
     meta: "1 copy-paste system prompt · 2 min setup",
     accent: "from-orange-400 to-violet-500",
     emoji: "🎯",
-    badge: "New",
+    badge: null,
   },
   {
     slug: "fable-5",
@@ -110,7 +125,7 @@ function ResourceCard({ r, i }: { r: Resource; i: number }) {
         <p className="text-[14px] text-gray-400 leading-relaxed mb-6">{r.desc}</p>
         <p className="text-[12px] font-semibold text-gray-500 mb-6">{r.meta}</p>
         <span className="mt-auto inline-flex items-center gap-2 text-[13px] font-bold text-orange-500 group-hover:gap-3 transition-all">
-          Read the guide
+          {r.cta ?? "Read the guide"}
           <span>→</span>
         </span>
       </div>
