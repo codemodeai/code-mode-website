@@ -19,6 +19,19 @@ type Resource = {
 
 const resources: Resource[] = [
   {
+    slug: "skill-acceleration-system",
+    href: "/guides/skill-acceleration-system.html",
+    external: true,
+    kind: "Skill Development",
+    kindColor: "bg-orange-50 text-orange-600 border-orange-200",
+    title: "The Skill Acceleration System",
+    desc: "One engineered prompt that turns Claude into a structured learning system — it calibrates to you, teaches through real attempts, builds you a 7-day plan, and checks your understanding at every stage. Paste it into a Claude Project and start.",
+    meta: "1 copy-paste system prompt · 2 min setup",
+    accent: "from-orange-400 to-violet-500",
+    emoji: "🎯",
+    badge: "New",
+  },
+  {
     slug: "fable-5",
     href: "/guides/fable-5.html",
     external: true,
@@ -29,7 +42,7 @@ const resources: Resource[] = [
     meta: "9 ready-to-use prompts · ~15 min per project",
     accent: "from-orange-400 to-rose-500",
     emoji: "⚡",
-    badge: "New",
+    badge: null,
   },
 ];
 

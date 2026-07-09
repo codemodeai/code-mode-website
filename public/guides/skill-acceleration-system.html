@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Skill Acceleration System — Code Mode</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    /* Code Mode — Lobby lavender palette (dark schematic variant) */
+    --bg:#0C0A14;
+    --bg-panel:#14111F;
+    --bg-panel-2:#191527;
+    --grid-line:rgba(178,156,248,0.07);
+    --lav:#B29CF8;
+    --lav-bright:#D4C4FA;
+    --lav-warm:#E4B7F5;
+    --text:#EDE9F7;
+    --muted:#9A93B0;
+    --border:rgba(205,184,255,0.16);
+    --border-strong:rgba(205,184,255,0.32);
+  }
+
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;background:var(--bg);}
+
+  body{
+    font-family:'Inter',sans-serif;
+    color:var(--text);
+    background-color:var(--bg);
+    background-image:
+      repeating-linear-gradient(0deg, var(--grid-line) 0px, var(--grid-line) 1px, transparent 1px, transparent 32px),
+      repeating-linear-gradient(90deg, var(--grid-line) 0px, var(--grid-line) 1px, transparent 1px, transparent 32px);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  .sheet{
+    max-width:920px;
+    margin:0 auto;
+    padding:56px 28px 100px;
+    position:relative;
+  }
+
+  /* corner registration marks */
+  .crop{
+    position:fixed;
+    width:22px;
+    height:22px;
+    border:1px solid var(--border-strong);
+    z-index:5;
+    pointer-events:none;
+  }
+  .crop::before, .crop::after{
+    content:"";
+    position:absolute;
+    background:var(--border-strong);
+  }
+  .crop::before{width:22px;height:1px;top:50%;left:0;}
+  .crop::after{width:1px;height:22px;left:50%;top:0;}
+  .crop.tl{top:18px;left:18px;border-right:none;border-bottom:none;}
+  .crop.tr{top:18px;right:18px;border-left:none;border-bottom:none;}
+  .crop.bl{bottom:18px;left:18px;border-right:none;border-top:none;}
+  .crop.br{bottom:18px;right:18px;border-left:none;border-top:none;}
+
+  /* title block, engineering-drawing style */
+  .titleblock{
+    border:1px solid var(--border);
+    border-radius:2px;
+    background:var(--bg-panel);
+    display:grid;
+    grid-template-columns:1fr 1fr 1fr;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;
+    letter-spacing:0.04em;
+    color:var(--muted);
+    margin-bottom:56px;
+  }
+  .titleblock > div{
+    padding:10px 14px;
+    border-right:1px solid var(--border);
+  }
+  .titleblock > div:last-child{border-right:none;}
+  .titleblock span{
+    display:block;
+    text-transform:uppercase;
+    font-size:9px;
+    color:var(--lav);
+    margin-bottom:4px;
+    letter-spacing:0.12em;
+  }
+  .titleblock b{color:var(--text);font-weight:500;}
+
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;
+    color:var(--lav-bright);
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    margin-bottom:18px;
+  }
+  .eyebrow::before{content:"◆ ";color:var(--lav-warm);}
+
+  h1{
+    font-family:'Space Grotesk',sans-serif;
+    font-size:clamp(34px,5vw,52px);
+    font-weight:700;
+    line-height:1.08;
+    margin:0 0 18px;
+    max-width:11ch;
+  }
+  h1 em{
+    font-style:normal;
+    color:var(--lav-bright);
+  }
+
+  .lede{
+    font-size:17px;
+    color:var(--muted);
+    max-width:56ch;
+    margin:0 0 44px;
+  }
+  .lede strong{color:var(--text);font-weight:600;}
+
+  .divider{
+    border:none;
+    border-top:1px dashed var(--border-strong);
+    margin:48px 0;
+    position:relative;
+  }
+  .divider::after{
+    content:attr(data-label);
+    position:absolute;
+    top:-9px;
+    left:0;
+    background:var(--bg);
+    padding:0 10px 0 0;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:10px;
+    letter-spacing:0.12em;
+    color:var(--muted);
+    text-transform:uppercase;
+  }
+
+  h2{
+    font-family:'Space Grotesk',sans-serif;
+    font-size:24px;
+    font-weight:600;
+    margin:0 0 6px;
+  }
+  .h2-note{
+    color:var(--muted);
+    font-size:14px;
+    margin:0 0 26px;
+  }
+
+  /* setup steps strip */
+  .steps{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:16px;
+    margin-bottom:8px;
+  }
+  .step{
+    background:var(--bg-panel);
+    border:1px solid var(--border);
+    border-radius:3px;
+    padding:20px 18px;
+  }
+  .step .num{
+    font-family:'IBM Plex Mono',monospace;
+    color:var(--lav-warm);
+    font-size:12px;
+    letter-spacing:0.1em;
+    margin-bottom:10px;
+  }
+  .step p{margin:0;font-size:14px;color:var(--muted);}
+  .step p b{color:var(--text);font-weight:500;}
+
+  /* prompt panel */
+  .panel{
+    border:1px solid var(--border-strong);
+    border-radius:4px;
+    background:var(--bg-panel);
+    overflow:hidden;
+    margin-top:8px;
+  }
+  .panel-head{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:12px 16px;
+    border-bottom:1px solid var(--border);
+    background:var(--bg-panel-2);
+  }
+  .panel-head .tag{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;
+    color:var(--lav-bright);
+    letter-spacing:0.1em;
+  }
+  .copy-btn{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;
+    letter-spacing:0.06em;
+    color:var(--bg);
+    background:var(--lav-bright);
+    border:none;
+    border-radius:2px;
+    padding:7px 14px;
+    cursor:pointer;
+    transition:opacity 0.15s ease;
+  }
+  .copy-btn:hover{opacity:0.85;}
+  .copy-btn:active{opacity:0.7;}
+
+  .prompt{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12.5px;
+    line-height:1.75;
+    color:#CBC2E3;
+    padding:22px 20px 26px;
+    white-space:pre-wrap;
+    max-height:560px;
+    overflow-y:auto;
+  }
+  .prompt .slot{
+    background:rgba(228,183,245,0.16);
+    color:var(--lav-warm);
+    padding:1px 5px;
+    border-radius:2px;
+  }
+  .prompt .hd{
+    color:var(--lav-bright);
+    font-weight:600;
+  }
+  .prompt .dim{color:var(--muted);}
+
+  /* stage flow */
+  .stages{
+    position:relative;
+    margin-top:36px;
+    padding-left:34px;
+    border-left:1px dashed var(--border-strong);
+  }
+  .stage{
+    position:relative;
+    margin-bottom:30px;
+  }
+  .stage:last-child{margin-bottom:0;}
+  .stage::before{
+    content:attr(data-n);
+    position:absolute;
+    left:-46px;
+    top:0;
+    width:26px;
+    height:26px;
+    border-radius:50%;
+    border:1px solid var(--lav);
+    background:var(--bg);
+    color:var(--lav-bright);
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .stage h3{
+    font-family:'Space Grotesk',sans-serif;
+    font-size:16px;
+    margin:2px 0 6px;
+  }
+  .stage p{margin:0;color:var(--muted);font-size:14px;max-width:60ch;}
+
+  /* rules grid */
+  .rules{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:14px;
+  }
+  .rule{
+    border:1px solid var(--border);
+    border-radius:3px;
+    padding:16px 18px;
+    background:var(--bg-panel);
+  }
+  .rule .k{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:10px;
+    color:var(--lav-warm);
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    display:block;
+    margin-bottom:6px;
+  }
+  .rule p{margin:0;font-size:13.5px;color:var(--muted);}
+
+  /* footer / CTA */
+  .footer{
+    margin-top:64px;
+    border:1px solid var(--border-strong);
+    border-radius:4px;
+    background:linear-gradient(160deg, var(--bg-panel-2), var(--bg-panel));
+    padding:34px 32px;
+    position:relative;
+    overflow:hidden;
+  }
+  .stamp{
+    position:absolute;
+    top:20px;
+    right:26px;
+    transform:rotate(8deg);
+    border:1.5px solid var(--lav-warm);
+    color:var(--lav-warm);
+    font-family:'IBM Plex Mono',monospace;
+    font-size:10px;
+    letter-spacing:0.12em;
+    padding:5px 10px;
+    border-radius:3px;
+    opacity:0.75;
+  }
+  .footer h3{
+    font-family:'Space Grotesk',sans-serif;
+    font-size:21px;
+    margin:0 0 10px;
+    max-width:26ch;
+  }
+  .footer p{
+    color:var(--muted);
+    font-size:14.5px;
+    max-width:52ch;
+    margin:0 0 20px;
+  }
+  .brandline{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;
+    color:var(--lav-bright);
+    letter-spacing:0.04em;
+    border-top:1px dashed var(--border);
+    padding-top:16px;
+    margin-top:4px;
+  }
+
+  @media (max-width:640px){
+    .steps{grid-template-columns:1fr;}
+    .rules{grid-template-columns:1fr;}
+    .titleblock{grid-template-columns:1fr;}
+    .titleblock > div{border-right:none;border-bottom:1px solid var(--border);}
+    .stages{padding-left:26px;}
+    .stage::before{left:-38px;width:22px;height:22px;font-size:10px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="crop tl"></div>
+<div class="crop tr"></div>
+<div class="crop bl"></div>
+<div class="crop br"></div>
+
+<div class="sheet">
+
+  <div class="titleblock">
+    <div><span>System</span><b>AI Skill Acceleration</b></div>
+    <div><span>Architect</span><b>Code Mode</b></div>
+    <div><span>Rev / Status</span><b>01 — Active</b></div>
+  </div>
+
+  <div class="eyebrow">Schematic No. 004 — Growth Systems Architects</div>
+  <h1>The Skill<br>Acceleration <em>System</em></h1>
+  <p class="lede">A single engineered prompt that turns Claude into a structured learning system — not a search engine, not a course. <strong>Built the way we build everything: as a system, not a shortcut.</strong></p>
+
+  <hr class="divider" data-label="Why this exists">
+
+  <h2>Courses teach information. This builds capability.</h2>
+  <p class="h2-note" style="max-width:62ch;">Most people use Claude like a lookup tool — one question, one answer, no memory of where you're stuck. This prompt gives it a job instead: calibrate to you, teach through real attempts, build you a plan, and check your understanding at every stage — all inside one Claude Project.</p>
+
+  <hr class="divider" data-label="Setup — 2 minutes">
+
+  <div class="steps">
+    <div class="step">
+      <div class="num">STEP 01</div>
+      <p>Open Claude, go to <b>Projects</b>, and create a new one for the skill you're building.</p>
+    </div>
+    <div class="step">
+      <div class="num">STEP 02</div>
+      <p>Open <b>Set custom instructions</b> and paste the full system prompt below into it.</p>
+    </div>
+    <div class="step">
+      <div class="num">STEP 03</div>
+      <p>Replace the skill field at the top, start a new chat, and type <b>"Let's start."</b></p>
+    </div>
+  </div>
+
+  <hr class="divider" data-label="The system prompt">
+
+  <h2>Paste this into Project Instructions</h2>
+  <p class="h2-note">Everything below goes in as one block — the four stages run in sequence automatically.</p>
+
+  <div class="panel">
+    <div class="panel-head">
+      <span class="tag">SYSTEM_PROMPT.TXT</span>
+      <button class="copy-btn" onclick="copyPrompt()">COPY PROMPT</button>
+    </div>
+    <div class="prompt" id="promptText"><span class="dim">SKILL TARGET:</span> <span class="slot">[ENTER SKILL HERE]</span>
+
+<span class="hd">━━━ SYSTEM ROLE ━━━</span>
+You are operating as a structured skill-acceleration engine, not a general chat assistant. Your objective: take me from zero functional ability to independent competence in the shortest reliable path. Treat this like a build process with checkpoints, not a lecture.
+
+Operating rules:
+- Prioritize the smallest set of moves that unlock the most real-world capability. Everything else is deferred.
+- I learn by doing the work, not by reading about it. Put me inside situations — don't summarize theory at me.
+- Every exchange ends with something I do next: a task, a decision, or a question. Never end on pure information.
+- Keep responses tight. No throat-clearing, no "great question," no filler.
+
+<span class="hd">━━━ STAGE 1 — CALIBRATION (run first, before any teaching) ━━━</span>
+Ask me three things, one at a time:
+1. What outcome am I actually trying to reach with this skill?
+2. What's my real starting point — never touched it, casual, or rusty but familiar?
+3. How much time can I realistically give this per day?
+
+From my answers, output:
+- The 4-6 core moves that account for most of the real capability in this skill
+- The one common trap beginners fall into that I should skip entirely
+- An honest estimate of how long "functional" will actually take
+
+Do not begin teaching until calibration is complete.
+
+<span class="hd">━━━ STAGE 2 — BUILD LOOP (main teaching cycle) ━━━</span>
+Teach exclusively through applied situations — never explain a concept before I've tried to use it.
+
+For each concept:
+- Drop me directly into a scenario that requires it
+- Let me attempt a real answer before you say anything
+- If I miss it, ask a question that points me back to my own error — don't correct me outright
+- Only hand me the direct answer after two guided attempts have failed
+- The moment I succeed, raise the difficulty or add a complication before moving on
+
+Track my trajectory. Several easy wins in a row → jump ahead. Two stalls in a row → break the concept smaller and rebuild. Tell me plainly where I stand: Starting Out / Building / Solid / Independent.
+
+<span class="hd">━━━ STAGE 3 — BUILD PLAN (generate after our first working session) ━━━</span>
+Produce a 7-day execution plan scaled to the daily time I gave you in calibration. For each day, include:
+- One specific, measurable task
+- What finishing that task actually looks like
+- The most common way people mess up that day's task
+- A short self-check challenge
+- One or two genuinely free resources for that day, named specifically
+
+If a day doesn't directly serve the outcome I named in calibration, cut it. Day 7 combines everything into one small finished output. If my available time changes, rebuild the plan immediately without waiting for me to ask.
+
+<span class="hd">━━━ STAGE 4 — CHECKPOINT (run on "check me," or end of any plan day) ━━━</span>
+Have me explain what I just learned as if teaching someone else. While I explain:
+- Flag anywhere I use a term without really understanding it
+- Flag any gap in my reasoning I glossed over
+- Push on vague answers with a follow-up "why"
+
+Then give me a short readout:
+- What I've actually got solid
+- What I think I understand but don't
+- What's still missing entirely
+- The one thing to work on next
+
+Close with a single challenge aimed directly at my weakest point.</div>
+  </div>
+
+  <hr class="divider" data-label="How the system runs">
+
+  <div class="stages">
+    <div class="stage" data-n="1">
+      <h3>Calibration</h3>
+      <p>Claude asks before it teaches — your goal, your starting point, your real available time. No generic starting point assumed.</p>
+    </div>
+    <div class="stage" data-n="2">
+      <h3>Build loop</h3>
+      <p>Every concept is a scenario you attempt first. Difficulty adjusts live based on how you're actually doing.</p>
+    </div>
+    <div class="stage" data-n="3">
+      <h3>Build plan</h3>
+      <p>A 7-day plan scaled to your real schedule, with a named free resource for each day — not a generic syllabus.</p>
+    </div>
+    <div class="stage" data-n="4">
+      <h3>Checkpoint</h3>
+      <p>Say "check me" any time. You explain it back, Claude finds the gaps, and hands you exactly what to fix next.</p>
+    </div>
+  </div>
+
+  <hr class="divider" data-label="Field notes">
+
+  <div class="rules">
+    <div class="rule"><span class="k">Be specific</span><p>"Marketing" is too broad. "Cold email copywriting for B2B SaaS" gives the system something to calibrate against.</p></div>
+    <div class="rule"><span class="k">Check yourself early</span><p>Don't wait for day 7. Say "check me" after every 2-3 concepts to catch weak spots before they compound.</p></div>
+    <div class="rule"><span class="k">Update the plan</span><p>Schedule changed? Tell it. The 7-day plan rebuilds around your real time without you re-explaining anything.</p></div>
+    <div class="rule"><span class="k">Keep it in a project</span><p>This has to live in Project Instructions, not a single chat — that's what keeps stage tracking and memory intact.</p></div>
+  </div>
+
+  <div class="footer">
+    <div class="stamp">SYSTEM VERIFIED</div>
+    <h3>Marketing gets attention. Systems convert it.</h3>
+    <p>This is a small example of how we think — a repeatable system where most tools just hand you a one-off answer. It's the same lens we bring to how leads move through your business.</p>
+    <div class="brandline">CODE MODE — Growth Systems Architects · Free GAO Audit available on request</div>
+  </div>
+
+</div>
+
+<script>
+function copyPrompt(){
+  const el = document.getElementById('promptText');
+  const text = el.innerText;
+  const btn = document.querySelector('.copy-btn');
+  navigator.clipboard.writeText(text).then(function(){
+    const original = btn.textContent;
+    btn.textContent = 'COPIED';
+    setTimeout(function(){ btn.textContent = original; }, 1800);
+  }).catch(function(){
+    btn.textContent = 'COPY FAILED';
+    setTimeout(function(){ btn.textContent = 'COPY PROMPT'; }, 1800);
+  });
+}
+</script>
+
+</body>
+</html>
