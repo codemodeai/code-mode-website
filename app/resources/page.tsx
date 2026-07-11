@@ -20,6 +20,19 @@ type Resource = {
 
 const resources: Resource[] = [
   {
+    slug: "meta-ads-research",
+    href: "/guides/meta-ads-research.html",
+    external: true,
+    kind: "Workflow Guide",
+    kindColor: "bg-orange-50 text-orange-600 border-orange-200",
+    title: "Claude x Meta Ads (Competitor analysis)",
+    desc: "Reverse-engineer any competitor's ad strategy in minutes. A four-step system that lets Claude in Chrome scroll the Meta Ads Library for you — creatives, offers, hooks, and CTAs, summarized into a table you can act on.",
+    meta: "4 steps · Under 5 minutes · Copy-paste prompt",
+    accent: "from-orange-400 to-indigo-500",
+    emoji: "🔍",
+    badge: "New",
+  },
+  {
     slug: "automation-playbook",
     href: "/guides/codemode-automation-playbook.pdf",
     external: true,
@@ -30,7 +43,7 @@ const resources: Resource[] = [
     meta: "15 business types · Product & service · PDF",
     accent: "from-orange-400 to-purple-600",
     emoji: "📈",
-    badge: "New",
+    badge: null,
     cta: "Download the PDF",
   },
   {

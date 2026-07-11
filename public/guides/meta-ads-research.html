@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Competitor Ad Research System — Code Mode</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#FEFEFE;
+    --surface:#F8F8F8;
+    --ink:#020202;
+    --ink-soft:#5B5763;
+    --ink-faint:#928DA0;
+    --accent:#BDA2EF;
+    --accent-tint:#F3EFFB;
+    --accent-deep:#7C58D6;
+    --border:#E7E2F2;
+    --max:860px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.001ms !important; transition-duration:0.001ms !important;}
+  }
+
+  .wrap{max-width:var(--max); margin:0 auto; padding:0 28px;}
+
+  /* ---------- top bar ---------- */
+  .topbar{
+    border-bottom:1px solid var(--border);
+    padding:22px 0;
+  }
+  .topbar .wrap{display:flex; align-items:center; justify-content:space-between;}
+  .brand{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-size:19px;
+    letter-spacing:0.01em;
+    display:flex; align-items:center; gap:9px;
+  }
+  .brand .dot{
+    width:8px; height:8px; border-radius:50%;
+    background:var(--accent-deep);
+    display:inline-block;
+  }
+  .topbar .tag{
+    font-size:12px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--ink-faint);
+    font-weight:600;
+  }
+
+  /* ---------- hero ---------- */
+  .hero{padding:52px 0 8px;}
+  .eyebrow{
+    font-size:12px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--accent-deep);
+    font-weight:700;
+    margin-bottom:14px;
+  }
+  h1{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    font-size:clamp(32px, 4.6vw, 48px);
+    line-height:1.1;
+    margin:0 0 16px;
+    letter-spacing:-0.01em;
+  }
+  h1 em{
+    font-style:italic;
+    color:var(--accent-deep);
+  }
+  .sub{
+    font-size:16.5px;
+    line-height:1.6;
+    color:var(--ink-soft);
+    max-width:540px;
+    margin:0;
+  }
+  .meta-row{
+    display:flex; gap:22px; margin-top:24px;
+    font-size:13px; color:var(--ink-faint); font-weight:600;
+  }
+  .meta-row span{display:flex; align-items:center; gap:7px;}
+  .meta-row svg{width:15px; height:15px; stroke:var(--accent-deep);}
+
+  /* ---------- system map (signature element) ---------- */
+  .sysmap{
+    margin:40px 0 44px;
+    padding:28px 26px 24px;
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:16px;
+  }
+  .sysmap-label{
+    font-size:11px;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--ink-faint);
+    font-weight:700;
+    margin-bottom:20px;
+    text-align:center;
+  }
+  .sysmap-track{
+    display:flex;
+    align-items:flex-start;
+    justify-content:space-between;
+    position:relative;
+    gap:6px;
+  }
+  .sysmap-track::before{
+    content:"";
+    position:absolute;
+    top:19px; left:38px; right:38px;
+    height:1.5px;
+    background:repeating-linear-gradient(90deg, var(--accent) 0 8px, transparent 8px 14px);
+  }
+  .node{
+    position:relative;
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    text-align:center;
+  }
+  .node .circ{
+    width:40px; height:40px; border-radius:50%;
+    background:var(--bg);
+    border:1.5px solid var(--accent);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-size:15px;
+    color:var(--accent-deep);
+    z-index:1;
+    margin-bottom:12px;
+  }
+  .node .nlabel{
+    font-size:12.5px;
+    font-weight:600;
+    line-height:1.35;
+    color:var(--ink);
+    max-width:110px;
+  }
+
+  /* ---------- steps ---------- */
+  .steps{margin:0 0 40px;}
+  .step{
+    display:grid;
+    grid-template-columns:44px 1fr;
+    gap:20px;
+    padding:26px 0;
+  }
+  .step:first-child{padding-top:0;}
+  .step:last-child{padding-bottom:4px;}
+  .step-num-wrap{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+  }
+  .step-num{
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-weight:500;
+    font-size:28px;
+    color:var(--accent-deep);
+    line-height:1;
+    margin-bottom:10px;
+  }
+  .step-line{
+    width:1px;
+    flex:1;
+    background:var(--border);
+    min-height:20px;
+  }
+  .step:last-child .step-line{display:none;}
+  .step-title{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-size:20px;
+    margin:0 0 14px;
+  }
+  .step-body{
+    font-size:15px;
+    line-height:1.6;
+    color:var(--ink-soft);
+    margin-bottom:12px;
+  }
+  .step-body strong{color:var(--ink); font-weight:600;}
+  .chip{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    background:var(--accent-tint);
+    color:var(--accent-deep);
+    border-radius:8px;
+    padding:8px 12px;
+    font-size:13px;
+    font-weight:600;
+    font-family:'Inter',monospace;
+  }
+  .chip svg{width:14px; height:14px; stroke:var(--accent-deep); flex-shrink:0;}
+
+  .substeps{
+    counter-reset:sub;
+    list-style:none;
+    margin:0 0 14px;
+    padding:0;
+    display:flex;
+    flex-direction:column;
+    gap:9px;
+  }
+  .substeps li{
+    counter-increment:sub;
+    display:flex;
+    align-items:flex-start;
+    gap:11px;
+    font-size:14px;
+    line-height:1.55;
+    color:var(--ink-soft);
+  }
+  .substeps li > span{
+    flex:1 1 auto;
+    min-width:0;
+  }
+  .substeps li::before{
+    content:counter(sub);
+    flex:0 0 19px;
+    height:19px;
+    border-radius:6px;
+    background:var(--accent-tint);
+    color:var(--accent-deep);
+    font-size:11px;
+    font-weight:700;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:'Inter',sans-serif;
+    margin-top:1px;
+  }
+  .substeps li strong{color:var(--ink); font-weight:600;}
+  .substeps code, .promptbox code{
+    background:var(--surface);
+    border:1px solid var(--border);
+    padding:1.5px 6px;
+    border-radius:5px;
+    font-size:12.5px;
+    color:var(--accent-deep);
+    font-family:'SFMono-Regular',Consolas,monospace;
+    white-space:nowrap;
+  }
+  .promptbox{
+    background:var(--ink);
+    color:#F1EEF9;
+    border-radius:10px;
+    padding:16px 18px;
+    font-family:'SFMono-Regular',Consolas,monospace;
+    font-size:12.5px;
+    line-height:1.6;
+    margin:14px 0 4px;
+    position:relative;
+  }
+  .promptbox .plabel{
+    position:absolute;
+    top:-9px; left:14px;
+    background:var(--accent-deep);
+    color:#fff;
+    font-family:'Inter',sans-serif;
+    font-size:10.5px;
+    font-weight:700;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    padding:3px 9px;
+    border-radius:5px;
+  }
+  .note{
+    font-size:12.5px;
+    color:var(--ink-faint);
+    margin:0 0 12px;
+    line-height:1.5;
+  }
+
+  /* ---------- why section ---------- */
+  .why{
+    background:var(--ink);
+    border-radius:16px;
+    padding:36px 32px;
+    margin:0 0 40px;
+    color:var(--bg);
+  }
+  .why-label{
+    font-size:11px;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--accent);
+    font-weight:700;
+    margin-bottom:14px;
+  }
+  .why p{
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-weight:500;
+    font-size:clamp(19px, 2.4vw, 23px);
+    line-height:1.45;
+    margin:0;
+  }
+  .why p em{ color:var(--accent); font-style:italic;}
+
+  /* ---------- cta ---------- */
+  .cta{
+    text-align:center;
+    padding:0 0 40px;
+  }
+  .cta h2{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    font-size:clamp(22px,2.8vw,27px);
+    margin:0 0 10px;
+  }
+  .cta p{
+    color:var(--ink-soft);
+    font-size:15px;
+    max-width:440px;
+    margin:0 auto 22px;
+    line-height:1.6;
+  }
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:9px;
+    background:var(--accent-deep);
+    color:#fff;
+    text-decoration:none;
+    font-weight:600;
+    font-size:15px;
+    padding:15px 26px;
+    border-radius:10px;
+    transition:transform 0.15s ease, background 0.15s ease;
+  }
+  .btn:hover{ background:#6a45c9; transform:translateY(-1px); }
+  .btn svg{width:16px; height:16px; stroke:#fff;}
+
+  /* ---------- footer ---------- */
+  footer{
+    border-top:1px solid var(--border);
+    padding:26px 0;
+  }
+  footer .wrap{
+    display:flex; justify-content:space-between; align-items:center;
+    font-size:12.5px; color:var(--ink-faint);
+  }
+  footer .fbrand{font-weight:700; color:var(--ink-soft);}
+
+  @media (max-width:600px){
+    .step{grid-template-columns:32px 1fr; gap:14px;}
+    .step-num{font-size:20px; margin-bottom:8px;}
+    .sysmap-track{flex-wrap:wrap; row-gap:22px;}
+    .sysmap-track::before{display:none;}
+    .node{flex:0 0 45%;}
+    footer .wrap{flex-direction:column; gap:8px; text-align:center;}
+  }
+</style>
+</head>
+<body>
+
+  <div class="topbar">
+    <div class="wrap">
+      <div class="brand"><span class="dot"></span>Code Mode</div>
+      <div class="tag">Growth Systems Architects</div>
+    </div>
+  </div>
+
+  <div class="wrap">
+
+    <section class="hero">
+      <div class="eyebrow">Workflow Guide</div>
+      <h1>Reverse-engineer any<br>competitor's ad strategy <em>in minutes.</em></h1>
+      <p class="sub">Most people scroll the Meta Ads Library one ad at a time. This is the four-step system to let Claude do it for you — creatives, offers, and messaging, summarized automatically.</p>
+      <div class="meta-row">
+        <span><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg> Under 5 minutes</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h10"/></svg> 4 steps</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/></svg> No manual scrolling</span>
+      </div>
+    </section>
+
+    <div class="sysmap">
+      <div class="sysmap-label">The System, End to End</div>
+      <div class="sysmap-track">
+        <div class="node"><div class="circ">1</div><div class="nlabel">Connect the browser</div></div>
+        <div class="node"><div class="circ">2</div><div class="nlabel">Open the source</div></div>
+        <div class="node"><div class="circ">3</div><div class="nlabel">Give the instruction</div></div>
+        <div class="node"><div class="circ">4</div><div class="nlabel">Get the breakdown</div></div>
+      </div>
+    </div>
+
+    <section class="steps">
+
+      <div class="step">
+        <div class="step-num-wrap"><div class="step-num">01</div><div class="step-line"></div></div>
+        <div>
+          <div class="step-title">Install Claude in Chrome</div>
+          <ol class="substeps">
+            <li><span>Open <strong>Google Chrome</strong> on desktop. (Not supported on other Chromium browsers or mobile.)</span></li>
+            <li><span>Go to the <strong>Chrome Web Store</strong> and search <code>Claude</code>, or open the extension page directly.</span></li>
+            <li><span>Click <strong>"Add to Chrome"</strong>, then confirm <strong>"Add extension"</strong> in the pop-up.</span></li>
+            <li><span>Sign in with your <strong>Claude account</strong> when prompted.</span></li>
+            <li><span>Click the <strong>puzzle-piece icon</strong> in Chrome's toolbar, then click the <strong>thumbtack</strong> next to "Claude" to pin it.</span></li>
+            <li><span>Click the pinned Claude icon and <strong>grant the requested permissions</strong> — this opens the side panel.</span></li>
+          </ol>
+          <div class="note">Requires a paid plan — Pro, Max, Team, or Enterprise. Free accounts can't use browser automation.</div>
+          <div class="chip">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+            One-time setup
+          </div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num-wrap"><div class="step-num">02</div><div class="step-line"></div></div>
+        <div>
+          <div class="step-title">Connect Claude to the Meta Ads Library</div>
+          <ol class="substeps">
+            <li><span>Open a new tab and go to the <strong>Meta Ads Library</strong> (<code>facebook.com/ads/library</code>).</span></li>
+            <li><span>Click the pinned <strong>Claude icon</strong> — the side panel opens and reads whatever tab is active.</span></li>
+            <li><span>Click the mode dropdown above the chat box and pick <strong>"Ask before acting"</strong> for your first run — it's the safer setting on a new site.</span></li>
+            <li><span>Type your request (see Step 3). A <strong>"Permission required"</strong> prompt will appear for this site.</span></li>
+            <li><span>Choose <strong>"Allow this action"</strong> for a single pass, or <strong>"Always allow actions on this site"</strong> if you'll run this often.</span></li>
+          </ol>
+          <div class="chip">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+            Public data — nothing to set up on Meta's side
+          </div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num-wrap"><div class="step-num">03</div><div class="step-line"></div></div>
+        <div>
+          <div class="step-title">Send the exact search prompt</div>
+          <ol class="substeps">
+            <li><span>In the side panel chat box, type the prompt below — swap in your own niche and country.</span></li>
+            <li><span>Claude replies with a <strong>plan</strong> listing exactly which pages it will visit. Read it.</span></li>
+            <li><span>Click <strong>"Approve plan"</strong> to let it run.</span></li>
+            <li><span>Claude opens results inside its own <strong>colored tab group</strong> and works through them one at a time — you can watch live or switch away.</span></li>
+          </ol>
+          <div class="promptbox">
+            <span class="plabel">Prompt</span>
+            On the Meta Ads Library, search "shoes" and filter to India, Active ads. Open the first 10 different brands' active ads. For each one, note the hook, the offer, the ad format (video / image / carousel), and the CTA button text.
+          </div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num-wrap"><div class="step-num">04</div><div class="step-line"></div></div>
+        <div>
+          <div class="step-title">Break it down and implement it</div>
+          <ol class="substeps">
+            <li><span>Ask: <code>"Summarize this as a table — brand, offer, hook, format, CTA."</code></span></li>
+            <li><span>Ask: <code>"Save this to a Google Doc"</code> (or export it as a note) so it doesn't disappear with the chat.</span></li>
+            <li><span>Scan the table for the <strong>angle that repeats across 3+ brands</strong> — that repetition is the signal, not any single ad.</span></li>
+            <li><span>Write one new ad draft using that repeated hook or offer, adapted to your own brand and price point.</span></li>
+          </ol>
+          <div class="chip">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+            Structured summary, ready to act on
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="why">
+      <div class="why-label">Why This Matters</div>
+      <p>The best marketers aren't just using AI to <em>create</em> ads. They're using it to <em>study</em> the ads that are already working. Research isn't manual labor — it's a system, the same as everything else in a growing business.</p>
+    </div>
+
+    <div class="cta">
+      <h2>Want this running automatically every week?</h2>
+      <p>This is a manual version of one small piece. We build the full system — competitor tracking, lead capture, and follow-up — so it runs without you touching it.</p>
+      <a class="btn" href="https://gao.codemodeai.com" target="_blank" rel="noopener">
+        Get your free GAO Audit
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+
+  </div>
+
+  <footer>
+    <div class="wrap">
+      <div class="fbrand">Code Mode — Growth Systems Architects</div>
+      <div>@code_mode_official</div>
+    </div>
+  </footer>
+
+</body>
+</html>
